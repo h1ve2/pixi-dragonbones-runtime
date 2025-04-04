@@ -1,0 +1,19 @@
+{
+  "name": "@h1ve2/pixi-dragonbones-runtime",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "author": "h1ve2",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace pixi-dragonbones-runtime",
+    "publish-ci": "npm run publish-ci --workspace pixi-dragonbones-runtime",
+    "docs:build": "npm run docs:build --workspace @h1ve2/pixi-dragonbones-runtime-docs"
+  },
+
+  "peerDependencies": {
+  }
+}
