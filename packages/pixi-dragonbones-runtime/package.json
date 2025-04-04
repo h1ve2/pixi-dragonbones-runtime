@@ -4,6 +4,7 @@
   "type": "module",
   "author": "h1ve2",
   "license": "MIT",
+  "homepage": "https://h1ve2.github.io/pixi-dragonbones-runtime/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/h1ve2/pixi-dragonbones-runtime.git"
