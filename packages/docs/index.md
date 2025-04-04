@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: <span class='bigtext'>DragonBones Runtime</span><br/><span class='text_for'>for</span> <img class='pixilogo' src='/images/pixijs-logo-transparent-dark.svg'/>
+  name: <span class='bigtext'>DragonBones Runtime</span><br/><span class='text_for'>for</span> <img class='pixilogo' src='./images/pixijs-logo-transparent-dark.svg'/>
   tagline: 支持 Pixi.js@8.x
   actions:
     - theme: brand
