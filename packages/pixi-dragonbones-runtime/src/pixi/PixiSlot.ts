@@ -21,12 +21,15 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {Slot, DisplayFrame, Surface} from "../armature/index.js";
-import {BlendMode, BaseObject, BinaryOffset, BoneType} from "../core/index.js";
-import {GeometryData} from "../model/index.js";
-import {PixiArmatureDisplay} from "./PixiArmatureDisplay.js";
-import {PixiTextureData, PixiTextureAtlasData} from "./PixiTextureAtlasData.js";
-import {Container, MeshSimple, Sprite} from "pixi.js";
+import { BLEND_MODES } from "pixi.js";
+import { DisplayObject } from "pixi.js";
+import { SimpleMesh } from "pixi.js";
+import { Sprite } from "pixi.js";
+import { Slot, DisplayFrame, Surface } from "../armature";
+import { BlendMode, BaseObject, BinaryOffset, BoneType } from "../core";
+import { GeometryData } from "../model";
+import { PixiArmatureDisplay } from "./PixiArmatureDisplay";
+import { PixiTextureData, PixiTextureAtlasData } from "./PixiTextureAtlasData";
 
 /**
  * - The PixiJS slot.
@@ -44,7 +47,7 @@ export class PixiSlot extends Slot {
     }
 
     private _textureScale: number;
-    private _renderDisplay: Container;
+    private _renderDisplay: DisplayObject;
 
     protected _onClear(): void {
         super._onClear();
@@ -58,12 +61,12 @@ export class PixiSlot extends Slot {
 
     protected _disposeDisplay(value: any, isRelease: boolean): void {
         if (!isRelease) {
-            (value as Container).destroy();
+            (value as DisplayObject).destroy();
         }
     }
 
     protected _onUpdateDisplay(): void {
-        this._renderDisplay = (this._display ? this._display : this._rawDisplay) as Container;
+        this._renderDisplay = (this._display ? this._display : this._rawDisplay) as DisplayObject;
     }
 
     protected _addDisplay(): void {
@@ -73,7 +76,7 @@ export class PixiSlot extends Slot {
 
     protected _replaceDisplay(value: any): void {
         const container = this._armature.display as PixiArmatureDisplay;
-        const prevDisplay = value as Container;
+        const prevDisplay = value as DisplayObject;
         container.addChild(this._renderDisplay);
         container.swapChildren(this._renderDisplay, prevDisplay);
         container.removeChild(prevDisplay);
@@ -93,7 +96,6 @@ export class PixiSlot extends Slot {
 
         container.addChildAt(this._renderDisplay, this._zOrder);
     }
-
     /**
      * @internal
      */
@@ -105,39 +107,39 @@ export class PixiSlot extends Slot {
         if (this._renderDisplay instanceof Sprite) {
             switch (this._blendMode) {
                 case BlendMode.Normal:
-                    this._renderDisplay.blendMode = 'normal';
+                    this._renderDisplay.blendMode = BLEND_MODES.NORMAL;
                     break;
 
                 case BlendMode.Add:
-                    this._renderDisplay.blendMode = 'add';
+                    this._renderDisplay.blendMode = BLEND_MODES.ADD;
                     break;
 
                 case BlendMode.Darken:
-                    this._renderDisplay.blendMode = 'darken';
+                    this._renderDisplay.blendMode = BLEND_MODES.DARKEN;
                     break;
 
                 case BlendMode.Difference:
-                    this._renderDisplay.blendMode = 'difference';
+                    this._renderDisplay.blendMode = BLEND_MODES.DIFFERENCE;
                     break;
 
                 case BlendMode.HardLight:
-                    this._renderDisplay.blendMode = 'hard-light';
+                    this._renderDisplay.blendMode = BLEND_MODES.HARD_LIGHT;
                     break;
 
                 case BlendMode.Lighten:
-                    this._renderDisplay.blendMode = 'lighten';
+                    this._renderDisplay.blendMode = BLEND_MODES.LIGHTEN;
                     break;
 
                 case BlendMode.Multiply:
-                    this._renderDisplay.blendMode = 'multiply';
+                    this._renderDisplay.blendMode = BLEND_MODES.MULTIPLY;
                     break;
 
                 case BlendMode.Overlay:
-                    this._renderDisplay.blendMode = 'overlay';
+                    this._renderDisplay.blendMode = BLEND_MODES.OVERLAY;
                     break;
 
                 case BlendMode.Screen:
-                    this._renderDisplay.blendMode = 'screen';
+                    this._renderDisplay.blendMode = BLEND_MODES.SCREEN;
                     break;
 
                 default:
@@ -151,7 +153,7 @@ export class PixiSlot extends Slot {
         const alpha = this._colorTransform.alphaMultiplier * this._globalAlpha;
         this._renderDisplay.alpha = alpha;
 
-        if (this._renderDisplay instanceof Sprite || this._renderDisplay instanceof MeshSimple) {
+        if (this._renderDisplay instanceof Sprite || this._renderDisplay instanceof SimpleMesh) {
             const color = (Math.round(this._colorTransform.redMultiplier * 0xFF) << 16) + (Math.round(this._colorTransform.greenMultiplier * 0xFF) << 8) + Math.round(this._colorTransform.blueMultiplier * 0xFF);
             this._renderDisplay.tint = color;
         }
@@ -170,7 +172,8 @@ export class PixiSlot extends Slot {
                     currentTextureAtlasData.copyFrom(currentTextureData.parent);
                     currentTextureAtlasData.renderTexture = this._armature.replacedTexture;
                     this._armature._replaceTextureAtlasData = currentTextureAtlasData;
-                } else {
+                }
+                else {
                     currentTextureAtlasData = this._armature._replaceTextureAtlasData as PixiTextureAtlasData;
                 }
 
@@ -194,7 +197,7 @@ export class PixiSlot extends Slot {
                     const uvOffset = vertexOffset + vertexCount * 2;
                     const scale = this._armature._armatureData.scale;
 
-                    const meshDisplay = this._renderDisplay as MeshSimple;
+                    const meshDisplay = this._renderDisplay as SimpleMesh;
 
                     const vertices = new Float32Array(vertexCount * 2) as any;
                     const uvs = new Float32Array(vertexCount * 2) as any;
@@ -223,18 +226,16 @@ export class PixiSlot extends Slot {
                     this._textureScale = 1.0;
                     meshDisplay.texture = renderTexture as any;
                     meshDisplay.vertices = vertices;
-                    // meshDisplay.uvBuffer.update(uvs);
-
-                    meshDisplay.geometry.uvs = uvs;
-                    meshDisplay.geometry.indices = indices;
-                    // meshDisplay.geometry.getIndex().update(indices);
+                    meshDisplay.uvBuffer.update(uvs);
+                    meshDisplay.geometry.getIndex().update(indices);
 
                     const isSkinned = this._geometryData.weight !== null;
                     const isSurface = this._parent._boneData.type !== BoneType.Bone;
                     if (isSkinned || isSurface) {
                         this._identityTransform();
                     }
-                } else {
+                }
+                else {
                     // Normal texture.
                     this._textureScale = currentTextureData.parent.scale * this._armature._armatureData.scale;
                     const normalDisplay = this._renderDisplay as Sprite;
@@ -248,12 +249,13 @@ export class PixiSlot extends Slot {
         }
 
         if (this._geometryData !== null) {
-            const meshDisplay = this._renderDisplay as MeshSimple;
+            const meshDisplay = this._renderDisplay as SimpleMesh;
             meshDisplay.texture = null as any;
             meshDisplay.x = 0.0;
             meshDisplay.y = 0.0;
             meshDisplay.visible = false;
-        } else {
+        }
+        else {
             const normalDisplay = this._renderDisplay as Sprite;
             normalDisplay.texture = null as any;
             normalDisplay.x = 0.0;
@@ -270,7 +272,7 @@ export class PixiSlot extends Slot {
         const weightData = geometryData.weight;
 
         const hasDeform = deformVertices.length > 0 && geometryData.inheritDeform;
-        const meshDisplay = this._renderDisplay as MeshSimple;
+        const meshDisplay = this._renderDisplay as SimpleMesh;
 
         if (weightData !== null) {
             const data = geometryData.data;
@@ -314,7 +316,8 @@ export class PixiSlot extends Slot {
                 meshDisplay.vertices[iD++] = xG;
                 meshDisplay.vertices[iD++] = yG;
             }
-        } else {
+        }
+        else {
             const isSurface = this._parent._boneData.type !== BoneType.Bone;
             const data = geometryData.data;
             const intArray = data.intArray;
@@ -339,7 +342,8 @@ export class PixiSlot extends Slot {
                     const matrix = (this._parent as Surface)._getGlobalTransformMatrix(x, y);
                     meshDisplay.vertices[i] = matrix.a * x + matrix.c * y + matrix.tx;
                     meshDisplay.vertices[i + 1] = matrix.b * x + matrix.d * y + matrix.ty;
-                } else {
+                }
+                else {
                     meshDisplay.vertices[i] = x;
                     meshDisplay.vertices[i + 1] = y;
                 }
@@ -355,20 +359,14 @@ export class PixiSlot extends Slot {
         if (this._renderDisplay === this._rawDisplay || this._renderDisplay === this._meshDisplay) {
             const x = transform.x - (this.globalTransformMatrix.a * this._pivotX + this.globalTransformMatrix.c * this._pivotY);
             const y = transform.y - (this.globalTransformMatrix.b * this._pivotX + this.globalTransformMatrix.d * this._pivotY);
-            // this._renderDisplay.setTransform(
-            //     x, y,
-            //     transform.scaleX * this._textureScale, transform.scaleY * this._textureScale,
-            //     transform.rotation,
-            //     -transform.skew, 0.0
-            // );
-            this._renderDisplay.updateTransform({
+            this._renderDisplay.setTransform(
                 x, y,
-                scaleX: transform.scaleX * this._textureScale, scaleY: transform.scaleY * this._textureScale,
-                rotation: transform.rotation,
-                skewX: -transform.skew, skewY: 0.0
-            })
-
-        } else {
+                transform.scaleX * this._textureScale, transform.scaleY * this._textureScale,
+                transform.rotation,
+                -transform.skew, 0.0
+            );
+        }
+        else {
             this._renderDisplay.position.set(transform.x, transform.y);
             this._renderDisplay.rotation = transform.rotation;
             this._renderDisplay.skew.set(-transform.skew, 0.0);
@@ -377,15 +375,6 @@ export class PixiSlot extends Slot {
     }
 
     protected _identityTransform(): void {
-        // this._renderDisplay.setTransform(0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0);
-
-        this._renderDisplay.updateTransform({
-            x: 0, y: 0,
-            pivotX: 0, pivotY: 0,
-            scaleX: 1, scaleY: 1,
-            rotation: 0,
-            skewX: 0, skewY: 0
-        })
-
+        this._renderDisplay.setTransform(0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0);
     }
 }

@@ -21,17 +21,30 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {IArmatureProxy, Armature} from "../armature/index.js";
-import {DragonBones, BoundingBoxType} from "../core/index.js";
-import {EventStringType, EventObject} from "../event/index.js";
-import {PolygonBoundingBoxData} from "../model/index.js";
-import {Animation} from "../animation/index.js";
-import {Container, ContainerChild, Graphics} from "pixi.js";
+import { Container } from "pixi.js";
+import { Graphics } from "pixi.js";
+import { IArmatureProxy, Armature } from "../armature";
+import { DragonBones, BoundingBoxType } from "../core";
+import { EventStringType, EventObject } from "../event";
+import { PolygonBoundingBoxData } from "../model";
+import { Animation } from "../animation";
+
+type PixiArmatureDisplayObjectEvents = {
+    [x in EventStringType]: [event: EventObject]
+};
+
+// Workaround for PIXI v7 custom display object events.
+// See: https://github.com/pixijs/pixijs/issues/8957
+declare global {
+    namespace GlobalMixins {
+        interface DisplayObjectEvents extends PixiArmatureDisplayObjectEvents {}
+    }
+}
 
 /**
  * @inheritDoc
  */
-export class PixiArmatureDisplay extends Container<ContainerChild> implements IArmatureProxy {
+export class PixiArmatureDisplay extends Container implements IArmatureProxy {
     /**
      * @private
      */
@@ -42,16 +55,12 @@ export class PixiArmatureDisplay extends Container<ContainerChild> implements IA
     private _debugDrawer: Container | null = null;
     private _debugDrawerChildren: Map<string, Graphics> = new Map();
 
-    constructor() {
-        super();
-    }
     /**
      * @inheritDoc
      */
     public dbInit(armature: Armature): void {
         this._armature = armature;
     }
-
     /**
      * @inheritDoc
      */
@@ -66,7 +75,6 @@ export class PixiArmatureDisplay extends Container<ContainerChild> implements IA
 
         super.destroy();
     }
-
     /**
      * @inheritDoc
      */
@@ -94,11 +102,13 @@ export class PixiArmatureDisplay extends Container<ContainerChild> implements IA
                     const endX = startX + bone.globalTransformMatrix.a * boneLength;
                     const endY = startY + bone.globalTransformMatrix.b * boneLength;
 
+                    boneDrawer.lineStyle(2.0, 0x00FFFF, 0.7);
                     boneDrawer.moveTo(startX, startY);
                     boneDrawer.lineTo(endX, endY);
-                    boneDrawer.stroke({width:2,color:0x00FFFF,alpha:.7})
-                    boneDrawer.circle(startX, startY, 3.0);
-                    boneDrawer.fill({color:0x00FFFF,alpha:.7})
+                    boneDrawer.lineStyle(0.0, 0, 0.0);
+                    boneDrawer.beginFill(0x00FFFF, 0.7);
+                    boneDrawer.drawCircle(startX, startY, 3.0);
+                    boneDrawer.endFill();
                 }
 
                 const slots = this._armature.getSlots();
@@ -115,14 +125,15 @@ export class PixiArmatureDisplay extends Container<ContainerChild> implements IA
                         }
 
                         child.clear();
+                        child.lineStyle(2.0, 0xFF00FF, 0.7);
 
                         switch (boundingBoxData.type) {
                             case BoundingBoxType.Rectangle:
-                                child.rect(-boundingBoxData.width * 0.5, -boundingBoxData.height * 0.5, boundingBoxData.width, boundingBoxData.height);
+                                child.drawRect(-boundingBoxData.width * 0.5, -boundingBoxData.height * 0.5, boundingBoxData.width, boundingBoxData.height);
                                 break;
 
                             case BoundingBoxType.Ellipse:
-                                child.ellipse(-boundingBoxData.width * 0.5, -boundingBoxData.height * 0.5, boundingBoxData.width, boundingBoxData.height);
+                                child.drawEllipse(-boundingBoxData.width * 0.5, -boundingBoxData.height * 0.5, boundingBoxData.width, boundingBoxData.height);
                                 break;
 
                             case BoundingBoxType.Polygon:
@@ -133,7 +144,8 @@ export class PixiArmatureDisplay extends Container<ContainerChild> implements IA
 
                                     if (i === 0) {
                                         child.moveTo(x, y);
-                                    } else {
+                                    }
+                                    else {
                                         child.lineTo(x, y);
                                     }
                                 }
@@ -145,26 +157,20 @@ export class PixiArmatureDisplay extends Container<ContainerChild> implements IA
                                 break;
                         }
 
-                        boneDrawer.stroke({width:2,color:0x00FFFF,alpha:.7})
+                        child.endFill();
                         slot.updateTransformAndMatrix();
                         slot.updateGlobalTransform();
 
                         const transform = slot.global;
-                        child.updateTransform({
-                            x: transform.x, y: transform.y,
-                            scaleX: transform.scaleX, scaleY: transform.scaleY,
-                            rotation: transform.rotation,
-                            skewX: transform.skew, skewY: 0.0,
-                            pivotX: slot._pivotX, pivotY: slot._pivotY
-                        });
-                        // child.setTransform(
-                        //     transform.x, transform.y,
-                        //     transform.scaleX, transform.scaleY,
-                        //     transform.rotation,
-                        //     transform.skew, 0.0,
-                        //     slot._pivotX, slot._pivotY
-                        // );
-                    } else {
+                        child.setTransform(
+                            transform.x, transform.y,
+                            transform.scaleX, transform.scaleY,
+                            transform.rotation,
+                            transform.skew, 0.0,
+                            slot._pivotX, slot._pivotY
+                        );
+                    }
+                    else {
                         const child = this._debugDrawerChildren.get(slot.name);
                         if (child) {
                             this._debugDrawerChildren.delete(slot.name);
@@ -172,12 +178,12 @@ export class PixiArmatureDisplay extends Container<ContainerChild> implements IA
                         }
                     }
                 }
-            } else if (this._debugDrawer !== null && this._debugDrawer.parent === this) {
+            }
+            else if (this._debugDrawer !== null && this._debugDrawer.parent === this) {
                 this.removeChild(this._debugDrawer);
             }
         }
     }
-
     /**
      * @inheritDoc
      */
@@ -189,21 +195,18 @@ export class PixiArmatureDisplay extends Container<ContainerChild> implements IA
             this._armature = null as any;
         }
     }
-
     /**
      * @inheritDoc
      */
     public destroy(): void {
         this.dispose();
     }
-
     /**
      * @private
      */
     public dispatchDBEvent(type: EventStringType, eventObject: EventObject): void {
         this.emit(type, eventObject);
     }
-
     /**
      * @inheritDoc
      */
@@ -212,28 +215,24 @@ export class PixiArmatureDisplay extends Container<ContainerChild> implements IA
 
 
     }
-
     /**
      * @inheritDoc
      */
     public addDBEventListener(type: EventStringType, listener: (event: EventObject) => void, target: any): void {
         this.addListener(type as any, listener as any, target);
     }
-
     /**
      * @inheritDoc
      */
     public removeDBEventListener(type: EventStringType, listener: (event: EventObject) => void, target: any): void {
         this.removeListener(type as any, listener as any, target);
     }
-
     /**
      * @inheritDoc
      */
     public get armature(): Armature {
         return this._armature;
     }
-
     /**
      * @inheritDoc
      */

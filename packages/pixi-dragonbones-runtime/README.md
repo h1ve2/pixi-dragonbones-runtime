@@ -1,16 +1,14 @@
 # DragonBones Runtime for Pixi.js
 
-适用于Pixi.js的DragonBones运行时
-
-支持Pixi.js@8.x
+supports @7.x
 
 ## install
 ```sh [npm]
-$ npm install pixi-dragonbones-runtime
+$ npm install pixi-dragonbones-runtime@7.x
 ```
 or
 ```sh [yarn]
-$ yarn add pixi-dragonbones-runtime
+$ yarn add pixi-dragonbones-runtime@7.x
 ```
 ## usage
 ```

@@ -21,16 +21,19 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {WorldClock} from "../animation/index.js";
-import {Armature, Slot} from "../armature/index.js";
-import {DragonBones, BaseObject} from "../core/index.js";
-import {BaseFactory, BuildArmaturePackage} from "../factory/index.js";
-import {DragonBonesData, SlotData, TextureAtlasData} from "../model/index.js";
-import {DataParser} from "../parser/index.js";
-import {PixiArmatureDisplay} from "./PixiArmatureDisplay.js";
-import {PixiSlot} from "./PixiSlot.js";
-import {PixiTextureAtlasData, PixiTextureData} from "./PixiTextureAtlasData.js";
-import {Assets, MeshSimple, Sprite, Texture, Ticker} from "pixi.js";
+import {Texture, BaseTexture} from "pixi.js";
+import {SimpleMesh} from "pixi.js";
+import {Sprite} from "pixi.js";
+import {WorldClock} from "../animation";
+import {Armature, Slot} from "../armature";
+import {DragonBones, BaseObject} from "../core";
+import {BaseFactory, BuildArmaturePackage} from "../factory";
+import {DragonBonesData, SlotData, TextureAtlasData} from "../model";
+import {DataParser} from "../parser";
+import {PixiArmatureDisplay} from "./PixiArmatureDisplay";
+import {PixiSlot} from "./PixiSlot";
+import {PixiTextureAtlasData, PixiTextureData} from "./PixiTextureAtlasData";
+import {Assets, Ticker} from "pixi.js";
 
 interface BuildArmatureOptions {
     dragonBonesName?: string
@@ -53,8 +56,9 @@ interface BuildArmatureOptions {
 export class PixiFactory extends BaseFactory {
     private static _dragonBonesInstance: DragonBones = null as any;
     private static _factory: PixiFactory = null as any;
-    private static _clockHandler(ticker: Ticker): void {
-        this._dragonBonesInstance.advanceTime(ticker.deltaMS / 1000);
+
+    private static _clockHandler(dt: number): void {
+        this._dragonBonesInstance.advanceTime(dt / Ticker.targetFPMS / 1000);
     }
 
     /*
@@ -120,7 +124,7 @@ export class PixiFactory extends BaseFactory {
         this._dragonBones = PixiFactory._dragonBonesInstance;
     }
 
-    protected _buildTextureAtlasData(textureAtlasData: PixiTextureAtlasData | null, textureAtlas: Texture | null): PixiTextureAtlasData {
+    protected _buildTextureAtlasData(textureAtlasData: PixiTextureAtlasData | null, textureAtlas: BaseTexture | null): PixiTextureAtlasData {
         if (textureAtlasData) {
             textureAtlasData.renderTexture = textureAtlas;
         } else {
@@ -146,9 +150,7 @@ export class PixiFactory extends BaseFactory {
         const slot = BaseObject.borrowObject(PixiSlot);
         slot.init(
             slotData, armature,
-            new Sprite(Texture.EMPTY), new MeshSimple({
-                texture: Texture.EMPTY
-            })
+            new Sprite(Texture.EMPTY), new SimpleMesh()
         );
 
         return slot;
@@ -308,7 +310,7 @@ export class PixiFactory extends BaseFactory {
         if (typeof textureAtlas === "string") {
             textureAtlas = Assets.cache.get(textureAtlas);
         }
-        return super.parseTextureAtlasData(rawData, textureAtlas, name,scale);
+        return super.parseTextureAtlasData(rawData, textureAtlas, name, scale);
     }
 }
 

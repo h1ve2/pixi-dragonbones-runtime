@@ -21,9 +21,10 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {BaseObject} from "../core/index.js";
-import {TextureAtlasData, TextureData} from "../model/index.js";
-import {groupD8, Rectangle, Texture} from "pixi.js";
+import { BaseTexture, Texture } from "pixi.js";
+import { Rectangle, groupD8 } from "pixi.js";
+import { BaseObject } from "../core";
+import { TextureAtlasData, TextureData } from "../model";
 
 /**
  * - The PixiJS texture atlas data.
@@ -40,7 +41,7 @@ export class PixiTextureAtlasData extends TextureAtlasData {
         return "[class dragonBones.PixiTextureAtlasData]";
     }
 
-    private _renderTexture: Texture | null = null; // Initial value.
+    private _renderTexture: BaseTexture | null = null; // Initial value.
 
     protected _onClear(): void {
         super._onClear();
@@ -51,14 +52,12 @@ export class PixiTextureAtlasData extends TextureAtlasData {
 
         this._renderTexture = null;
     }
-
     /**
      * @inheritDoc
      */
     public createTexture(): TextureData {
         return BaseObject.borrowObject(PixiTextureData);
     }
-
     /**
      * - The PixiJS texture.
      * @version DragonBones 3.0
@@ -69,11 +68,10 @@ export class PixiTextureAtlasData extends TextureAtlasData {
      * @version DragonBones 3.0
      * @language zh_CN
      */
-    public get renderTexture(): Texture | null {
+    public get renderTexture(): BaseTexture | null {
         return this._renderTexture;
     }
-
-    public set renderTexture(value: Texture | null) {
+    public set renderTexture(value: BaseTexture | null) {
         if (this._renderTexture === value) {
             return;
         }
@@ -83,18 +81,17 @@ export class PixiTextureAtlasData extends TextureAtlasData {
         if (this._renderTexture !== null) {
             for (let k in this.textures) {
                 const textureData = this.textures[k] as PixiTextureData;
-                console.log(textureData);
-                textureData.renderTexture = new Texture({
-                    source: this._renderTexture.source,
-                    frame: new Rectangle(textureData.region.x, textureData.region.y, textureData.region.width, textureData.region.height),
-                    orig: new Rectangle(textureData.region.x, textureData.region.y, textureData.region.width, textureData.region.height),
-                    trim: new Rectangle(0, 0, textureData.region.width, textureData.region.height),
-                    rotate: textureData.rotated ? groupD8.S : 0,
-                });
 
-                // textureData.renderTexture = Texture.WHITE;
+                textureData.renderTexture = new Texture(
+                    this._renderTexture,
+                    new Rectangle(textureData.region.x, textureData.region.y, textureData.region.width, textureData.region.height),
+                    new Rectangle(textureData.region.x, textureData.region.y, textureData.region.width, textureData.region.height),
+                    new Rectangle(0, 0, textureData.region.width, textureData.region.height),
+                    textureData.rotated ? groupD8.S : 0
+                );
             }
-        } else {
+        }
+        else {
             for (let k in this.textures) {
                 const textureData = this.textures[k] as PixiTextureData;
                 textureData.renderTexture = null;
@@ -102,7 +99,6 @@ export class PixiTextureAtlasData extends TextureAtlasData {
         }
     }
 }
-
 /**
  * @internal
  */

@@ -1,9 +1,10 @@
 {
   "name": "pixi-dragonbones-runtime",
-  "version": "8.0.0",
+  "version": "7.0.0",
   "type": "module",
   "author": "h1ve2",
   "license": "MIT",
+  "homepage": "https://h1ve2.github.io/pixi-dragonbones-runtime/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/h1ve2/pixi-dragonbones-runtime.git"
@@ -11,7 +12,7 @@
   "keywords": [
     "dragonbones",
     "pixi.js",
-    "pixiv8",
+    "pixiv7",
     "armature",
     "animate"
   ],
@@ -36,7 +37,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "pixi.js": "^8.0.0"
+    "pixi.js": "^7.0.0"
   },
   "devDependencies": {
     "install-peers": "^1.0.4",
