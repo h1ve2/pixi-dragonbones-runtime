@@ -13,7 +13,7 @@ if (dataJSON_8x) {
         group.children.forEach(childId => {
             const child = getPageById(dataJSON_8x.children, childId);
 
-            obj.items.push({text:child.name,link:"/api/8.x/"+group.title.toLowerCase()+"/"+child.name});
+            obj.items.push({text: child.name, link: "/api/8.x/" + group.title.toLowerCase() + "/" + child.name});
         })
     })
 }
@@ -30,18 +30,33 @@ export default defineConfig({
     title: "pixi-dragonbones-runtime",
     description: "DragonBones Runtime for Pixi.js",
     cleanUrls: true,
+    head: [
+        [
+            'script',
+            {},
+            `
+              window._hmt = window._hmt || [];
+              (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?6eadec7ec0ff67aa205cb114fa8bd120";
+                var s = document.getElementsByTagName("script")[0]; 
+                s.parentNode.insertBefore(hm, s);
+              })();
+      `,
+        ],
+    ],
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
-        logo:"/images/logo.png",
-        siteTitle:"",
+        logo: "/images/logo.png",
+        siteTitle: "",
         nav: [
             {text: 'Home', link: '/'},
             {text: '指南', link: '/guide/'},
             {
-                text: 'API',link: '/api/8.x/'
+                text: 'API', link: '/api/8.x/'
                 // items: [
-                    // {text: "8.x", link: '/api/8.x/'},
-                    // {text: "7.x", link: '/api/7.x/'}
+                // {text: "8.x", link: '/api/8.x/'},
+                // {text: "7.x", link: '/api/7.x/'}
                 // ]
             }
         ],
