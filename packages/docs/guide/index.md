@@ -1,15 +1,10 @@
 ---
 outline: deep
 ---
-# pixi-dragonbones-runtime
-
-适用于Pixi.js的DragonBones运行时
-
-支持Pixi.js@8.x
+# 快速开始
 
 ## 安装
 ::: code-group
-
 ```sh [npm]
 $ npm install pixi-dragonbones-runtime
 ```
@@ -17,10 +12,11 @@ $ npm install pixi-dragonbones-runtime
 $ yarn add pixi-dragonbones-runtime
 ```
 :::
+> [!WARNING]
+> **pixi.js@7.x** 对应 **pixi-dragonbones-runtime@7.x** 版本。
 ## 使用
-```
+```ts
 import { PixiFactory } from "pixi-dragonbones-runtime";
-...
 
 // 资源加载后创建
 const factory = PixiFactory.factory;
@@ -33,5 +29,6 @@ armatureDisplay.animation.play("xxx",-1);
 
 
 this.addChild(armatureDisplay);
-...
 ```
+## 示例
+> 完善中...
