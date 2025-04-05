@@ -32,6 +32,24 @@ export default defineConfig({
     cleanUrls: true,
     lang: 'zh-CN',
     head: [
+        [
+            'script',
+            {},
+            `
+              (function(w, d, s, q, i) {
+                    w[q] = w[q] || [];
+                    var f = d.getElementsByTagName(s)[0],j = d.createElement(s);
+                    j.async = true;
+                    j.id = 'beacon-aplus';
+                    j.src = 'https://d.alicdn.com/alilog/mlog/aplus/' + i + '.js';
+                    f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'aplus_queue', '203467608');
+              window.aplus_queue.push({
+                    action: 'aplus.setMetaInfo',
+                    arguments: ['appKey', '67f14cfd65c707471a3faf07']
+                });
+      `,
+        ],
     ],
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
