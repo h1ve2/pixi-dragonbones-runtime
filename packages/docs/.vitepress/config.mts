@@ -30,20 +30,8 @@ export default defineConfig({
     title: "pixi-dragonbones-runtime",
     description: "DragonBones Runtime for Pixi.js",
     cleanUrls: true,
+    lang: 'zh-CN',
     head: [
-        [
-            'script',
-            {},
-            `
-              window._hmt = window._hmt || [];
-              (function() {
-                var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?6eadec7ec0ff67aa205cb114fa8bd120";
-                var s = document.getElementsByTagName("script")[0]; 
-                s.parentNode.insertBefore(hm, s);
-              })();
-      `,
-        ],
     ],
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
@@ -76,7 +64,10 @@ export default defineConfig({
                 ]
             }],
             // "/api/7.x": sidebar_7x,
-            "/api/8.x": [sidebar_8x],
+            "/api/8.x": [
+                {text:"指南",link: '/guide/'},
+                sidebar_8x
+            ],
         },
 
         socialLinks: [
