@@ -21,7 +21,8 @@
     "build": "npm run clean && tsc",
     "start": "npm run clean && tsc --watch",
     "clean": "rimraf ./lib",
-    "prepublishOnly": "npm run build",
+    "copyREADME": "cpy ../../README.md ./ --flat",
+    "prepublishOnly": "npm run build && npm run copyREADME",
     "publish-ci": "npm publish"
   },
   "exports": {
@@ -40,6 +41,7 @@
     "pixi.js": "^8.0.0"
   },
   "devDependencies": {
+    "cpy-cli": "^5.0.0",
     "install-peers": "^1.0.4",
     "rimraf": "^6.0.1",
     "typescript": "^5.6.3"
