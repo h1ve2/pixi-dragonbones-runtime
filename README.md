@@ -2,9 +2,9 @@
 
 适用于Pixi.js的DragonBones运行时
 
-支持Pixi.js@8.x
+supports [Pixi.js](https://pixijs.com/)@7~8.x
 
-## install
+## 安装
 ```sh [npm]
 $ npm install pixi-dragonbones-runtime
 ```
@@ -12,10 +12,12 @@ or
 ```sh [yarn]
 $ yarn add pixi-dragonbones-runtime
 ```
-## usage
-```
+> [!WARNING]
+> **pixi.js@7.x** 对应 **pixi-dragonbones-runtime@7.x** 版本。
+
+## 使用
+```ts
 import { PixiFactory } from "pixi-dragonbones-runtime";
-...
 
 // after assets loaded
 const factory = PixiFactory.factory;
@@ -28,5 +30,5 @@ armatureDisplay.animation.play("xxx",-1);
 
 
 this.addChild(armatureDisplay);
-...
+
 ```
