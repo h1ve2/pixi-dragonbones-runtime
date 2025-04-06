@@ -83,7 +83,7 @@ export default defineConfig({
             }],
             // "/api/7.x": sidebar_7x,
             "/api/8.x": [
-                {text:"指南",link: '/guide/'},
+                {text:"指南",link: '/guide/', items:[]},
                 sidebar_8x
             ],
         },
