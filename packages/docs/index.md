@@ -15,6 +15,7 @@ hero:
     - theme: alt
       text: Github
       link: https://github.com/h1ve2/pixi-dragonbones-runtime
+      target: _blank
 
 #features:
 #  - title: 网格
