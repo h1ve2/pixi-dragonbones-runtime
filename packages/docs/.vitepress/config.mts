@@ -3,7 +3,10 @@ import {groupIconMdPlugin, groupIconVitePlugin} from 'vitepress-plugin-group-ico
 
 import dataJSON_8x from '../api/8.x/doc.json';
 
-const sidebar_8x = {text: 'API',link:"/api/8.x/", items: []};
+const isDev = process.env.NODE_ENV === 'development';
+const base = isDev ? '/' : '/pixi-dragonbones-runtime/';
+
+const sidebar_8x = {text: 'API', link: "/api/8.x/", items: []};
 
 if (dataJSON_8x) {
     dataJSON_8x.groups.forEach(group => {
@@ -31,7 +34,9 @@ export default defineConfig({
     description: "DragonBones Runtime for Pixi.js",
     cleanUrls: true,
     lang: 'zh-CN',
+    base: base,
     head: [
+        ['link', {rel: 'icon', href: base + 'images/logo.png'}],
         [
             'script',
             {},
@@ -83,7 +88,7 @@ export default defineConfig({
             }],
             // "/api/7.x": sidebar_7x,
             "/api/8.x": [
-                {text:"指南",link: '/guide/', items:[]},
+                {text: "指南", link: '/guide/', items: []},
                 sidebar_8x
             ],
         },
