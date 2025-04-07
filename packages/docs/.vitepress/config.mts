@@ -3,7 +3,7 @@ import {groupIconMdPlugin, groupIconVitePlugin} from 'vitepress-plugin-group-ico
 
 import dataJSON_8x from '../api/8.x/doc.json';
 
-const sidebar_8x = {text: 'API', items: []};
+const sidebar_8x = {text: 'API',link:"/api/8.x/", items: []};
 
 if (dataJSON_8x) {
     dataJSON_8x.groups.forEach(group => {
@@ -71,7 +71,7 @@ export default defineConfig({
             "/guide": [{
                 text: '指南',
                 items: [
-                    {text: '快速入门', link: '/guide/'},
+                    {text: '快速开始', link: '/guide/'},
                     {text: '事件', link: '/guide/event'},
                     {text: '资源', link: '/guide/resources'},
                 ]
@@ -83,13 +83,14 @@ export default defineConfig({
             }],
             // "/api/7.x": sidebar_7x,
             "/api/8.x": [
-                {text:"指南",link: '/guide/'},
+                {text:"指南",link: '/guide/', items:[]},
                 sidebar_8x
             ],
         },
 
         socialLinks: [
-            {icon: 'github', link: 'https://github.com/h1ve2/pixi-dragonbones-runtime'}
+            {icon: 'github', link: 'https://github.com/h1ve2/pixi-dragonbones-runtime'},
+            {icon: 'npm', link: 'https://www.npmjs.com/package/pixi-dragonbones-runtime'}
         ],
         footer: {
             message: 'Released under the MIT License.',
