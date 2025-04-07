@@ -17,7 +17,7 @@
     "docs:build": "npm run typedoc:all && vitepress build --base=/pixi-dragonbones-runtime/",
     "docs:preview": "vitepress preview",
     "clean": "rimraf ./api",
-    "typedoc:md": "typedoc --lang zh --cleanOutputDir --out ./api/8.x/",
+    "typedoc:md": "typedoc --lang zh --out ./api/8.x/",
     "typedoc:json": "typedoc --json ./api/8.x/doc.json  --cleanOutputDir false",
     "typedoc:all": "npm run typedoc:md && npm run typedoc:json"
   },
