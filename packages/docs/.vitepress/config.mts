@@ -1,5 +1,7 @@
-import {defineConfig} from 'vitepress'
-import {groupIconMdPlugin, groupIconVitePlugin} from 'vitepress-plugin-group-icons'
+import {defineConfig} from 'vitepress';
+import {groupIconMdPlugin, groupIconVitePlugin} from 'vitepress-plugin-group-icons';
+import container from 'markdown-it-container';
+import { renderSandbox } from 'vitepress-plugin-sandpack';
 
 import dataJSON_8x from '../api/8.x/doc.json';
 
@@ -36,6 +38,7 @@ export default defineConfig({
     lang: 'zh-CN',
     base: base,
     head: [
+        ['meta', {name: 'google-site-verification', content: 'rUeF22MNNzMhe5S8sOS5k50Km-zLsFQAG777yjXW61U'}],
         ['link', {rel: 'icon', href: base + 'images/logo.png'}],
         [
             'script',
@@ -105,7 +108,12 @@ export default defineConfig({
     },
     markdown: {
         config(md) {
-            md.use(groupIconMdPlugin)
+            md.use(container, 'sandbox', {
+                    render(tokens, idx) {
+                        return renderSandbox(tokens, idx, 'sandbox');
+                    },
+                });
+            // md.use(groupIconMdPlugin);
         },
     },
     vite: {
