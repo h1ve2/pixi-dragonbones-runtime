@@ -1,9 +1,14 @@
-import {defineConfig} from 'vitepress'
-import {groupIconMdPlugin, groupIconVitePlugin} from 'vitepress-plugin-group-icons'
+import {defineConfig} from 'vitepress';
+import {groupIconMdPlugin, groupIconVitePlugin} from 'vitepress-plugin-group-icons';
+import container from 'markdown-it-container';
+import { renderSandbox } from 'vitepress-plugin-sandpack';
 
 import dataJSON_8x from '../api/8.x/doc.json';
 
-const sidebar_8x = {text: 'API',link:"/api/8.x/", items: []};
+const isDev = process.env.NODE_ENV === 'development';
+const base = isDev ? '/' : '/pixi-dragonbones-runtime/';
+
+const sidebar_8x = {text: 'API', link: "/api/8.x/", items: []};
 
 if (dataJSON_8x) {
     dataJSON_8x.groups.forEach(group => {
@@ -31,7 +36,10 @@ export default defineConfig({
     description: "DragonBones Runtime for Pixi.js",
     cleanUrls: true,
     lang: 'zh-CN',
+    base: base,
     head: [
+        ['meta', {name: 'google-site-verification', content: 'rUeF22MNNzMhe5S8sOS5k50Km-zLsFQAG777yjXW61U'}],
+        ['link', {rel: 'icon', href: base + 'images/logo.png'}],
         [
             'script',
             {},
@@ -54,7 +62,7 @@ export default defineConfig({
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
         logo: "/images/logo.png",
-        siteTitle: "",
+        siteTitle: false,
         nav: [
             {text: 'Home', link: '/'},
             {text: '指南', link: '/guide/'},
@@ -83,7 +91,7 @@ export default defineConfig({
             }],
             // "/api/7.x": sidebar_7x,
             "/api/8.x": [
-                {text:"指南",link: '/guide/', items:[]},
+                {text: "指南", link: '/guide/', items: []},
                 sidebar_8x
             ],
         },
@@ -100,7 +108,12 @@ export default defineConfig({
     },
     markdown: {
         config(md) {
-            md.use(groupIconMdPlugin)
+            md.use(container, 'sandbox', {
+                    render(tokens, idx) {
+                        return renderSandbox(tokens, idx, 'sandbox');
+                    },
+                });
+            // md.use(groupIconMdPlugin);
         },
     },
     vite: {
