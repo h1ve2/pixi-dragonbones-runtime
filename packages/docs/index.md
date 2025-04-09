@@ -7,7 +7,7 @@ hero:
   tagline: 支持 Pixi.js@7~8.x
   image:
     src: ./images/pic.png
-#    alt: VitePress
+    alt: pixi-dragonbones-runtime
   actions:
     - theme: brand
       text: 快速开始
@@ -30,7 +30,7 @@ features:
   - title: 网格
     icon: 🕸
     details: 支持FFD网格动画
-  - title: es6
+  - title: ES6
     icon:
       src: ./images/es6-icon-128.svg
     details: 使用import导入及TreeShaking
