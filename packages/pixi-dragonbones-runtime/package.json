@@ -9,6 +9,9 @@
     "type": "git",
     "url": "git+https://github.com/h1ve2/pixi-dragonbones-runtime.git"
   },
+  "bugs": {
+    "url": "https://github.com/h1ve2/pixi-dragonbones-runtime/issues"
+  },
   "keywords": [
     "dragonbones",
     "pixi.js",
@@ -18,17 +21,20 @@
   ],
   "description": "DragonBones Runtime for Pixi.js",
   "scripts": {
-    "build": "npm run clean && tsc",
-    "start": "npm run clean && tsc --watch",
+    "build": "npm run clean && rollup -c",
+    "start": "npm run clean && rollup -c --watch",
     "clean": "rimraf ./lib",
     "copyREADME": "cpy ../../README.md ./ --flat",
     "prepublishOnly": "npm run build && npm run copyREADME",
     "publish-ci": "npm publish"
   },
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.mjs",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/index.js",
-      "types": "./lib/index.d.ts"
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.cjs"
     }
   },
   "files": [
@@ -41,9 +47,15 @@
     "pixi.js": "^8.0.0"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
     "cpy-cli": "^5.0.0",
     "install-peers": "^1.0.4",
     "rimraf": "^6.0.1",
+    "rollup": "^4.39.0",
+    "tslib": "^2.8.1",
     "typescript": "^5.6.3"
   }
 }
