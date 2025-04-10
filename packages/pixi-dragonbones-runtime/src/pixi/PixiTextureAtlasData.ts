@@ -83,7 +83,6 @@ export class PixiTextureAtlasData extends TextureAtlasData {
         if (this._renderTexture !== null) {
             for (let k in this.textures) {
                 const textureData = this.textures[k] as PixiTextureData;
-                console.log(textureData);
                 textureData.renderTexture = new Texture({
                     source: this._renderTexture.source,
                     frame: new Rectangle(textureData.region.x, textureData.region.y, textureData.region.width, textureData.region.height),
