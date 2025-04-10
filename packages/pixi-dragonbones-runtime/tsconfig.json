@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "ESNext",
+		"target": "ES6",
 		"module": "ESNext",
 		"moduleResolution": "bundler",
 		"outDir": "./lib",
@@ -9,7 +9,7 @@
 		"strict": false,
 		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"sourceMap": false
+		"sourceMap": true
 	},
 	"include": ["src"]
 }
