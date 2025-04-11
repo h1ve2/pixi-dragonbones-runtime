@@ -274,7 +274,7 @@ export class PixiFactory extends BaseFactory {
      * @see #getTextureAtlasData()
      * @see #addTextureAtlasData()
      * @see #removeTextureAtlasData()
-     * @see dragonBones.TextureAtlasData
+     * @see TextureAtlasData
      * @version DragonBones 4.5
      * @language en_US
      */
@@ -283,18 +283,19 @@ export class PixiFactory extends BaseFactory {
      * @param rawData - 原始贴图集数据。
      *                  如果传入string，则从缓存中按别名查找
      * @param textureAtlas - 贴图集对象。
-     *                  如果传入string，则从缓存中按别名查找
+     *                  如果未设置，则从JSON中获取；
+     *                  如果传入string，则从缓存中按别名查找；
      * @param name - 为该实例指定一个缓存名称，以便可以通过此名称获取该实例。 （如果未设置，则使用该实例中的名称）
      * @param scale - 为贴图集指定一个缩放值。 （默认: 1.0）
      * @returns TextureAtlasData 实例
      * @see #getTextureAtlasData()
      * @see #addTextureAtlasData()
      * @see #removeTextureAtlasData()
-     * @see dragonBones.TextureAtlasData
+     * @see TextureAtlasData
      * @version DragonBones 4.5
      * @language zh_CN
      */
-    public parseTextureAtlasData(rawData: string | Object, textureAtlas: string | Texture, name: string | null = null, scale: number = 1.0): TextureAtlasData {
+    public parseTextureAtlasData(rawData: string | Object, textureAtlas?: string | Texture, name: string | null = null, scale: number = 1.0): TextureAtlasData {
         let dataObj: TextureAtlasData = rawData as TextureAtlasData;
 
         if (typeof rawData === "string") {
