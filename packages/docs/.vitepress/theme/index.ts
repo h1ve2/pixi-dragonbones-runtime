@@ -5,6 +5,7 @@ import DefaultTheme from 'vitepress/theme'
 import './style.css'
 import 'virtual:group-icons.css'
 import { Sandbox } from 'vitepress-plugin-sandpack';
+import { Sandpack } from '../sandpack';
 import 'vitepress-plugin-sandpack/dist/style.css';
 
 
@@ -26,6 +27,7 @@ export default {
             }
         };
         app.component('Sandbox', Sandbox);
+        app.component('Sandpack', Sandpack);
     }
 } satisfies Theme;
 

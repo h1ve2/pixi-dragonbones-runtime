@@ -12,6 +12,10 @@ $ npm i pixi-dragonbones-runtime
 $ yarn add pixi-dragonbones-runtime
 ```
 :::
-<!--@include: ../../../README.md{15,}-->
-## 示例
-> 完善中...
+<!--@include: ../../../README.md{20,38}-->
+## 示例 {#demo}
+:::sandpack {}
+```ts /index.ts
+<!--@include: ./demo.ts-->
+```
+:::
