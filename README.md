@@ -1,10 +1,15 @@
-# DragonBones Runtime for Pixi.js
-<p style="text-align: center;">
-<img alt="pixi-dragonbones-runtime" width="200" src="https://h1ve2.github.io/pixi-dragonbones-runtime/images/pic.png" />
+<p style="text-align:center;" align="center">
+    <picture align="center">
+        <img align="center" alt="pixi-dragonbones-runtime" width="200" src="https://h1ve2.github.io/pixi-dragonbones-runtime/images/pic.png" />
+    </picture>
+  <div align="center" style="margin-top: -20px">
+      <h2>pixi-dragonbones-runtime</h2>
+  </div>
 </p>
-适用于Pixi.js的DragonBones运行时
 
-支持 [Pixi.js](https://pixijs.com/)@7~8.x
+DragonBones Runtime for Pixi.js
+
+supports [Pixi.js](https://pixijs.com/)@7~8.x
 
 - [指南](https://h1ve2.github.io/pixi-dragonbones-runtime/guide/)
 - [API文档](https://h1ve2.github.io/pixi-dragonbones-runtime/api/8.x/)
