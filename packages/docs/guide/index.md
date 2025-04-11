@@ -12,7 +12,7 @@ $ npm i pixi-dragonbones-runtime
 $ yarn add pixi-dragonbones-runtime
 ```
 :::
-<!--@include: ../../../README.md{20,38}-->
+<!--@include: ../../../README.md{24,42}-->
 ## 示例 {#demo}
 :::sandpack {}
 ```ts /index.ts
