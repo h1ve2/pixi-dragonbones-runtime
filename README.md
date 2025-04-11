@@ -3,7 +3,7 @@
         <img align="center" alt="pixi-dragonbones-runtime" width="200" src="https://h1ve2.github.io/pixi-dragonbones-runtime/images/pic.png" />
     </picture>
     <div align="center" style="margin-top: -20px">
-        <h1 style="border: none;">pixi-dragonbones-runtime</h1>
+        <h3 style="font-size: 2em;">pixi-dragonbones-runtime</h3>
     </div>
 </p>
 
