@@ -31,14 +31,7 @@ import {PixiArmatureDisplay} from "./PixiArmatureDisplay.js";
 import {PixiSlot} from "./PixiSlot.js";
 import {PixiTextureAtlasData, PixiTextureData} from "./PixiTextureAtlasData.js";
 import {Assets, MeshSimple, Sprite, Texture, Ticker} from "pixi.js";
-
-interface BuildArmatureOptions {
-    dragonBonesName?: string
-    skinName?: string
-    textureAtlasName?: string
-    clock?: WorldClock | null
-    throwOnError?: boolean
-}
+import {convertAlias, getAlias} from "./PixiAssetsUtil";
 
 /**
  * - The PixiJS factory.
@@ -53,22 +46,23 @@ interface BuildArmatureOptions {
 export class PixiFactory extends BaseFactory {
     private static _dragonBonesInstance: DragonBones = null as any;
     private static _factory: PixiFactory = null as any;
+
     private static _clockHandler(ticker: Ticker): void {
         this._dragonBonesInstance.advanceTime(ticker.deltaMS / 1000);
     }
 
-    /*
-        * `passedTime` is elapsed time, specified in seconds.
-        */
+    /**
+     * `passedTime` is elapsed time, specified in seconds.
+     */
     public static advanceTime(passedTime: number): void {
         if (this._dragonBonesInstance) {
             this._dragonBonesInstance.advanceTime(passedTime);
         }
     }
 
-    /*
-    * whether use `PIXI.Ticker.shared`
-    */
+    /**
+     * whether use `PIXI.Ticker.shared`
+     */
     public static useSharedTicker: boolean = true;
 
     /**
@@ -301,14 +295,21 @@ export class PixiFactory extends BaseFactory {
      * @language zh_CN
      */
     public parseTextureAtlasData(rawData: string | Object, textureAtlas: string | Texture, name: string | null = null, scale: number = 1.0): TextureAtlasData {
+        let dataObj: TextureAtlasData = rawData as TextureAtlasData;
+
         if (typeof rawData === "string") {
-            rawData = Assets.cache.get(rawData);
+            dataObj = Assets.cache.get(rawData);
+        }
+
+        if (!textureAtlas) {
+            let dataObjAlias = getAlias(dataObj);
+            textureAtlas = convertAlias(dataObjAlias, dataObj.imagePath);
         }
 
         if (typeof textureAtlas === "string") {
             textureAtlas = Assets.cache.get(textureAtlas);
         }
-        return super.parseTextureAtlasData(rawData, textureAtlas, name,scale);
+        return super.parseTextureAtlasData(dataObj, textureAtlas, name, scale);
     }
 }
 
