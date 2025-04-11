@@ -1,8 +1,17 @@
-# DragonBones Runtime for Pixi.js
-
-适用于Pixi.js的DragonBones运行时
+# pixi-dragonbones-runtime
+<p style="text-align:center;" align="center">
+    <picture align="center">
+        <img align="center" alt="pixi-dragonbones-runtime" width="200" src="https://h1ve2.github.io/pixi-dragonbones-runtime/images/pic.png" />
+    </picture>
+    <div align="center" style="margin-top: -20px">
+        <h3>DragonBones Runtime for Pixi.js</h3>
+    </div>
+</p>
 
 supports [Pixi.js](https://pixijs.com/)@7~8.x
+
+- [指南](https://h1ve2.github.io/pixi-dragonbones-runtime/guide/)
+- [API文档](https://h1ve2.github.io/pixi-dragonbones-runtime/api/8.x/)
 
 ## 安装
 ```sh [npm]
@@ -28,7 +37,11 @@ const armatureDisplay = factory.buildArmatureDisplay("xxx");
 
 armatureDisplay.animation.play("xxx",-1);
 
-
-this.addChild(armatureDisplay);
+app.stage.addChild(armatureDisplay);
 
 ```
+## 示例
+![demo](https://github.com/h1ve2/pixi-dragonbones-runtime-starter/raw/main/preview.gif)
+
+- [完整示例](https://h1ve2.github.io/pixi-dragonbones-runtime/guide/#demo)
+- [starter示例项目](https://github.com/h1ve2/pixi-dragonbones-runtime-starter) (pixi & vite & assetpack)

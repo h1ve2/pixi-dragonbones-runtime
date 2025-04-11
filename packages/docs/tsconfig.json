@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "NodeNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "checkJs": false,
+    "noEmit": true,
+    "allowJs": true,
+    "skipLibCheck": true
+  },
+  "include": [],
+}

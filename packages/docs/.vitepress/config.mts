@@ -1,7 +1,9 @@
 import {defineConfig} from 'vitepress';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import {groupIconMdPlugin, groupIconVitePlugin} from 'vitepress-plugin-group-icons';
 import container from 'markdown-it-container';
-import { renderSandbox } from 'vitepress-plugin-sandpack';
+import {renderSandbox} from 'vitepress-plugin-sandpack';
 
 import dataJSON_8x from '../api/8.x/doc.json';
 
@@ -29,6 +31,26 @@ function getPageById(obj: any[], childId: number): any {
         return obj[i];
     }
 }
+
+const guideSidebar = {
+    text: '指南',
+    collapsed: false,
+    items: [
+        {text: '快速开始', link: '/guide/'},
+        {text: '事件', link: '/guide/event'},
+        {text: '进阶', link: '/guide/advanced'},
+        {text: '数据格式', link: '/guide/dataformat'},
+    ]
+};
+const otherSidebar = {
+    text: '其他',
+    collapsed: false,
+    items: [
+        {text: 'tools', link: '/other/tools'},
+        {text: '资源', link: '/other/resources'},
+    ]
+};
+
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -66,32 +88,15 @@ export default defineConfig({
         nav: [
             {text: 'Home', link: '/'},
             {text: '指南', link: '/guide/'},
-            {
-                text: 'API', link: '/api/8.x/'
-                // items: [
-                // {text: "8.x", link: '/api/8.x/'},
-                // {text: "7.x", link: '/api/7.x/'}
-                // ]
-            }
+            {text: 'API', link: '/api/8.x/'}
         ],
 
         sidebar: {
-            "/guide": [{
-                text: '指南',
-                items: [
-                    {text: '快速开始', link: '/guide/'},
-                    {text: '事件', link: '/guide/event'},
-                    {text: '资源', link: '/guide/resources'},
-                ]
-            }, {
-                text: '其他',
-                items: [
-                    {text: 'API', link: '/api/8.x/'}
-                ]
-            }],
-            // "/api/7.x": sidebar_7x,
-            "/api/8.x": [
-                {text: "指南", link: '/guide/', items: []},
+            "/guide": [guideSidebar, otherSidebar, {text: 'API', link: '/api/8.x/'}],
+            "/other": [guideSidebar, otherSidebar, {text: 'API', link: '/api/8.x/'}],
+            "/api": [
+                {...guideSidebar, collapsed: true},
+                {...otherSidebar, collapsed: true},
                 sidebar_8x
             ],
         },
@@ -108,16 +113,23 @@ export default defineConfig({
     },
     markdown: {
         config(md) {
-            md.use(container, 'sandbox', {
+            md
+                // .use(container, 'sandbox', {
+                //     render(tokens, idx) {
+                //         return renderSandbox(tokens, idx, 'sandbox');
+                //     },
+                // })
+                .use(container, 'sandpack', {
                     render(tokens, idx) {
-                        return renderSandbox(tokens, idx, 'sandbox');
+                        return renderSandbox(tokens, idx, 'sandpack');
                     },
-                });
-            // md.use(groupIconMdPlugin);
+                })
+                .use(groupIconMdPlugin);
         },
     },
     vite: {
         plugins: [
+            vueJsx(),
             groupIconVitePlugin()
         ],
     }
