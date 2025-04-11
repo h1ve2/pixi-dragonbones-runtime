@@ -1,13 +1,12 @@
+# pixi-dragonbones-runtime
 <p style="text-align:center;" align="center">
     <picture align="center">
         <img align="center" alt="pixi-dragonbones-runtime" width="200" src="https://h1ve2.github.io/pixi-dragonbones-runtime/images/pic.png" />
     </picture>
     <div align="center" style="margin-top: -20px">
-        <h1 style="border: none;">pixi-dragonbones-runtime</h1>
+        <h3>DragonBones Runtime for Pixi.js</h3>
     </div>
 </p>
-
-DragonBones Runtime for Pixi.js
 
 supports [Pixi.js](https://pixijs.com/)@7~8.x
 
