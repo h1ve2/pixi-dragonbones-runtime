@@ -5,7 +5,6 @@ export const Sandpack = defineComponent({
     name: 'Sandpack',
     props: sandboxProps,
     setup(props, {slots}) {
-        console.log(props);
         return () => (
             <Sandbox
                 {...props}
