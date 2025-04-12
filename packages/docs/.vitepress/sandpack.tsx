@@ -11,6 +11,7 @@ export const Sandpack = defineComponent({
                 {...props}
                 template='vanilla-ts'
                 showTabs={false}
+                lightTheme='githubLight'
                 options={{
                     showLineNumbers: true,
                     coderHeight:500,
