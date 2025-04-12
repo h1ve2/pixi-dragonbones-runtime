@@ -46,3 +46,10 @@ function onFrameEvent(event) {
 - FRAME_EVENT 动画中的关键帧触发自定义事件时触发。
 
 > 更多内容请参考[API](../api/8.x/classes/EventObject.md)
+
+## 示例
+:::sandpack {showConsole previewHeight=500}
+```ts /index.ts
+<!--@include: ./event.ts-->
+```
+:::
