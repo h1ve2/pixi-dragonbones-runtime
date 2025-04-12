@@ -5,24 +5,24 @@
     </picture>
     <div align="center" style="margin-top: -20px">
         <h3>DragonBones Runtime for Pixi.js</h3>
+        <p>supports Pixi.js@7~8.x</p>
     </div>
 </p>
 
-supports [Pixi.js](https://pixijs.com/)@7~8.x
 
 - [指南](https://h1ve2.github.io/pixi-dragonbones-runtime/guide/)
 - [API文档](https://h1ve2.github.io/pixi-dragonbones-runtime/api/8.x/)
 
 ## 安装
 ```sh [npm]
-$ npm install pixi-dragonbones-runtime
+$ npm i pixi-dragonbones-runtime
 ```
 or
 ```sh [yarn]
 $ yarn add pixi-dragonbones-runtime
 ```
 > [!WARNING]
-> **pixi.js@7.x** 对应 **pixi-dragonbones-runtime@7.x** 版本。
+> `pixi.js@7.x` 对应 `pixi-dragonbones-runtime@7.x` 版本。
 
 ## 使用
 ```ts
@@ -41,7 +41,7 @@ app.stage.addChild(armatureDisplay);
 
 ```
 ## 示例
-![demo](https://github.com/h1ve2/pixi-dragonbones-runtime-starter/raw/main/preview.gif)
+[![demo](https://github.com/h1ve2/pixi-dragonbones-runtime-starter/raw/main/preview.gif)](https://h1ve2.github.io/pixi-dragonbones-runtime/guide/#demo)
 
 - [完整示例](https://h1ve2.github.io/pixi-dragonbones-runtime/guide/#demo)
 - [starter示例项目](https://github.com/h1ve2/pixi-dragonbones-runtime-starter) (pixi & vite & assetpack)
