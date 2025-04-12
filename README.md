@@ -41,7 +41,7 @@ app.stage.addChild(armatureDisplay);
 
 ```
 ## 示例
-![demo](https://github.com/h1ve2/pixi-dragonbones-runtime-starter/raw/main/preview.gif)
+[![demo](https://github.com/h1ve2/pixi-dragonbones-runtime-starter/raw/main/preview.gif)](https://h1ve2.github.io/pixi-dragonbones-runtime/guide/#demo)
 
 - [完整示例](https://h1ve2.github.io/pixi-dragonbones-runtime/guide/#demo)
 - [starter示例项目](https://github.com/h1ve2/pixi-dragonbones-runtime-starter) (pixi & vite & assetpack)
