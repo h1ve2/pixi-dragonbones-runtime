@@ -19,7 +19,7 @@ export const Sandpack = defineComponent({
                 customSetup={{
                     deps: {
                         'pixi.js': '^8.9.1',
-                        'pixi-dragonbones-runtime': '^8.0.1',
+                        'pixi-dragonbones-runtime': '^8.0.2',
                     },
                 }}
             >
