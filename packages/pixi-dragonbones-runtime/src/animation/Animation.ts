@@ -476,10 +476,9 @@ export class Animation extends BaseObject {
             }
         }
 
-        // not sure about this to be true, but it fixes a bug I found
-        if (!this._armature._lockUpdate && animationConfig.fadeInTime <= 0.0) { // Blend animation state, update armature.
-            this.advanceTime(0.0);
-        }
+        // if (!this._armature._lockUpdate && animationConfig.fadeInTime <= 0.0) { // Blend animation state, update armature.
+        //     this.advanceTime(0.0);
+        // }
 
         this._lastAnimationState = animationState;
 
