@@ -32,14 +32,11 @@ import { SkinData } from "./SkinData.js";
 import { ActionData, UserData } from "./UserData.js";
 
 /**
- * - The armature data.
+ * [en] The armature data.
+ *
+ * [zh] 骨架数据。
+ *
  * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - 骨架数据。
- * @version DragonBones 3.0
- * @language zh_CN
  */
 export class ArmatureData extends BaseObject {
     public static toString(): string {
@@ -50,14 +47,11 @@ export class ArmatureData extends BaseObject {
      */
     public type: ArmatureType;
     /**
-     * - The animation frame rate.
+     * [en] The animation frame rate.
+     *
+     * [zh] 动画帧率。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 动画帧率。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public frameRate: number;
     /**
@@ -69,14 +63,11 @@ export class ArmatureData extends BaseObject {
      */
     public scale: number;
     /**
-     * - The armature name.
+     * [en] The armature name.
+     *
+     * [zh] 骨架名称。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 骨架名称。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public name: string;
     /**
@@ -84,14 +75,11 @@ export class ArmatureData extends BaseObject {
      */
     public readonly aabb: Rectangle = new Rectangle();
     /**
-     * - The names of all the animation data.
+     * [en] The names of all the animation data.
+     *
+     * [zh] 所有的动画数据名称。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 所有的动画数据名称。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public readonly animationNames: Array<string> = [];
     /**
@@ -131,25 +119,19 @@ export class ArmatureData extends BaseObject {
      */
     public readonly animations: Record<string, AnimationData> = {};
     /**
-     * - The default skin data.
+     * [en] The default skin data.
+     *
+     * [zh] 默认插槽数据。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 默认插槽数据。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public defaultSkin: SkinData | null;
     /**
-     * - The default animation data.
+     * [en] The default animation data.
+     *
+     * [zh] 默认动画数据。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 默认动画数据。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public defaultAnimation: AnimationData | null;
     /**
@@ -407,31 +389,23 @@ export class ArmatureData extends BaseObject {
         }
     }
     /**
-     * - Get a specific done data.
+     * [en] Get a specific done data.
+     *
+     * [zh] 获取特定的骨骼数据。
+     *
      * @param boneName - The bone name.
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 获取特定的骨骼数据。
-     * @param boneName - 骨骼名称。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public getBone(boneName: string): BoneData | null {
         return boneName in this.bones ? this.bones[boneName] : null;
     }
     /**
-     * - Get a specific slot data.
+     * [en] Get a specific slot data.
+     *
+     * [zh] 获取特定的插槽数据。
+     *
      * @param slotName - The slot name.
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 获取特定的插槽数据。
-     * @param slotName - 插槽名称。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public getSlot(slotName: string): SlotData | null {
         return slotName in this.slots ? this.slots[slotName] : null;
@@ -443,16 +417,14 @@ export class ArmatureData extends BaseObject {
         return constraintName in this.constraints ? this.constraints[constraintName] : null;
     }
     /**
-     * - Get a specific skin data.
-     * @param skinName - The skin name.
+     * [en] Get a specific skin data.
+     *
+     * [zh] 获取特定皮肤数据。
+     *
+     * @param skinName - [en] The skin name.
+     * @param skinName - [zh] 皮肤名称。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 获取特定皮肤数据。
-     * @param skinName - 皮肤名称。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public getSkin(skinName: string): SkinData | null {
         return skinName in this.skins ? this.skins[skinName] : null;
@@ -469,30 +441,25 @@ export class ArmatureData extends BaseObject {
         return skin.getDisplay(slotName, meshName) as MeshDisplayData | null;
     }
     /**
-     * - Get a specific animation data.
-     * @param animationName - The animation animationName.
+     * [en] Get a specific animation data.
+     *
+     * [zh] 获取特定的动画数据。
+     *
+     * @param animationName - [en] The animation animationName.
+     * @param animationName - [zh] 动画名称。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 获取特定的动画数据。
-     * @param animationName - 动画名称。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public getAnimation(animationName: string): AnimationData | null {
         return animationName in this.animations ? this.animations[animationName] : null;
     }
 }
 /**
- * - The bone data.
+ * [en] The bone data.
+ *
+ * [zh] 骨骼数据。
+ *
  * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - 骨骼数据。
- * @version DragonBones 3.0
- * @language zh_CN
  */
 export class BoneData extends BaseObject {
     public static toString(): string {
@@ -519,14 +486,11 @@ export class BoneData extends BaseObject {
      */
     public type: BoneType;
     /**
-     * - The bone length.
+     * [en] The bone length.
+     *
+     * [zh] 骨骼长度。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 骨骼长度。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public length: number;
     /**
@@ -534,14 +498,11 @@ export class BoneData extends BaseObject {
      */
     public alpha: number;
     /**
-     * - The bone name.
+     * [en] The bone name.
+     *
+     * [zh] 骨骼名称。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 骨骼名称。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public name: string;
     /**
@@ -553,14 +514,11 @@ export class BoneData extends BaseObject {
      */
     public userData: UserData | null = null; // Initial value.
     /**
-     * - The parent bone data.
+     * [en] The parent bone data.
+     *
+     * [zh] 父骨骼数据。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 父骨骼数据。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public parent: BoneData | null;
 
@@ -604,14 +562,11 @@ export class SurfaceData extends BoneData {
     }
 }
 /**
- * - The slot data.
+ * [en] The slot data.
+ *
+ * [zh] 插槽数据。
+ *
  * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - 插槽数据。
- * @version DragonBones 3.0
- * @language zh_CN
  */
 export class SlotData extends BaseObject {
     /**
@@ -649,14 +604,11 @@ export class SlotData extends BaseObject {
      */
     public alpha: number;
     /**
-     * - The slot name.
+     * [en] The slot name.
+     *
+     * [zh] 插槽名称。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 插槽名称。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public name: string;
     /**
@@ -668,14 +620,11 @@ export class SlotData extends BaseObject {
      */
     public userData: UserData | null = null; // Initial value.
     /**
-     * - The parent bone data.
+     * [en] The parent bone data.
+     *
+     * [zh] 父骨骼数据。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 父骨骼数据。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public parent: BoneData;
 

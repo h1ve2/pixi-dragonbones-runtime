@@ -24,14 +24,11 @@
 import { Matrix } from "./Matrix.js";
 
 /**
- * - 2D Transform.
+ * [en] 2D Transform.
+ *
+ * [zh] 2D 变换。
+ *
  * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - 2D 变换。
- * @version DragonBones 3.0
- * @language zh_CN
  */
 export class Transform {
     /**
@@ -68,69 +65,51 @@ export class Transform {
         return value;
     }
     /**
-     * - Horizontal translate.
+     * [en] Horizontal translate.
+     *
+     * [zh] 水平位移。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 水平位移。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public x: number;
     /**
-     * - Vertical translate.
+     * [en] Vertical translate.
+     *
+     * [zh] 垂直位移。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 垂直位移。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public y: number;
     /**
-     * - Skew. (In radians)
+     * [en] Skew. (In radians)
+     *
+     * [zh] 倾斜。 （以弧度为单位）
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 倾斜。 （以弧度为单位）
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public skew: number;
     /**
-     * - rotation. (In radians)
+     * [en] rotation. (In radians)
+     *
+     * [zh] 旋转。 （以弧度为单位）
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 旋转。 （以弧度为单位）
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public rotation: number;
     /**
-     * - Horizontal Scaling.
+     * [en] Horizontal Scaling.
+     *
+     * [zh] 水平缩放。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 水平缩放。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public scaleX: number;
     /**
-     * - Vertical scaling.
+     * [en] Vertical scaling.
+     *
+     * [zh] 垂直缩放。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 垂直缩放。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public scaleY: number;
     /**

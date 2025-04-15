@@ -26,28 +26,22 @@ import { ArmatureData } from "./ArmatureData.js";
 import { DisplayData } from "./DisplayData.js";
 
 /**
- * - The skin data, typically a armature data instance contains at least one skinData.
+ * [en] The skin data, typically a armature data instance contains at least one skinData.
+ *
+ * [zh] 皮肤数据，通常一个骨架数据至少包含一个皮肤数据。
+ *
  * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - 皮肤数据，通常一个骨架数据至少包含一个皮肤数据。
- * @version DragonBones 3.0
- * @language zh_CN
  */
 export class SkinData extends BaseObject {
     public static toString(): string {
         return "[class dragonBones.SkinData]";
     }
     /**
-     * - The skin name.
+     * [en] The skin name.
+     *
+     * [zh] 皮肤名称。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 皮肤名称。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public name: string;
     /**

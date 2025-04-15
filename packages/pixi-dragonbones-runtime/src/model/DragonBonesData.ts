@@ -26,18 +26,14 @@ import { ArmatureData } from "./ArmatureData.js";
 import { UserData } from "./UserData.js";
 
 /**
- * - The DragonBones data.
+ * [en] The DragonBones data.
  * A DragonBones data contains multiple armature data.
- * @see dragonBones.ArmatureData
- * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - 龙骨数据。
+ *
+ * [zh] 龙骨数据。
  * 一个龙骨数据包含多个骨架数据。
- * @see dragonBones.ArmatureData
+ *
+ * @see ArmatureData
  * @version DragonBones 3.0
- * @language zh_CN
  */
 export class DragonBonesData extends BaseObject {
     public static toString(): string {
@@ -48,38 +44,29 @@ export class DragonBonesData extends BaseObject {
      */
     public autoSearch: boolean;
     /**
-     * - The animation frame rate.
+     * [en] The animation frame rate.
+     *
+     * [zh] 动画帧频。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 动画帧频。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public frameRate: number;
     /**
-     * - The data version.
+     * [en] The data version.
+     *
+     * [zh] 数据版本。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 数据版本。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public version: string;
     /**
-     * - The DragonBones data name.
+     * [en] The DragonBones data name.
      * The name is consistent with the DragonBones project name.
-     * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 龙骨数据名称。
+     *
+     * [zh] 龙骨数据名称。
      * 该名称与龙骨项目名保持一致。
+     *
      * @version DragonBones 3.0
-     * @language zh_CN
      */
     public name: string;
     /**
@@ -95,14 +82,11 @@ export class DragonBonesData extends BaseObject {
      */
     public readonly cachedFrames: Array<number> = [];
     /**
-     * - All armature data names.
+     * [en] All armature data names.
+     *
+     * [zh] 所有的骨架数据名称。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 所有的骨架数据名称。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public readonly armatureNames: Array<string> = [];
     /**
@@ -189,16 +173,14 @@ export class DragonBonesData extends BaseObject {
         this.armatureNames.push(value.name);
     }
     /**
-     * - Get a specific armature data.
+     * [en] Get a specific armature data.
+     *
+     * [zh] 获取特定的骨架数据。
+     *
      * @param armatureName - The armature data name.
-     * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 获取特定的骨架数据。
      * @param armatureName - 骨架数据名称。
+     *
      * @version DragonBones 3.0
-     * @language zh_CN
      */
     public getArmature(armatureName: string): ArmatureData | null {
         return armatureName in this.armatures ? this.armatures[armatureName] : null;

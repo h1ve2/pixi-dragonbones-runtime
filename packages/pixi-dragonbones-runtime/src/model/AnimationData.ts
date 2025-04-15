@@ -25,14 +25,11 @@ import { BaseObject, AnimationBlendType, TimelineType } from "../core/index.js";
 import { ArmatureData } from "./ArmatureData.js";
 
 /**
- * - The animation data.
+ * [en] The animation data.
+ *
+ * [zh] 动画数据。
+ *
  * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - 动画数据。
- * @version DragonBones 3.0
- * @language zh_CN
  */
 export class AnimationData extends BaseObject {
     public static toString(): string {
@@ -58,36 +55,27 @@ export class AnimationData extends BaseObject {
      */
     public blendType: AnimationBlendType;
     /**
-     * - The frame count of the animation.
+     * [en] The frame count of the animation.
+     *
+     * [zh] 动画的帧数。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 动画的帧数。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public frameCount: number;
     /**
-     * - The play times of the animation. [0: Loop play, [1~N]: Play N times]
+     * [en] The play times of the animation. [0: Loop play, [1~N]: Play N times]
+     *
+     * [zh] 动画的播放次数。 [0: 无限循环播放, [1~N]: 循环播放 N 次]
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 动画的播放次数。 [0: 无限循环播放, [1~N]: 循环播放 N 次]
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public playTimes: number;
     /**
-     * - The duration of the animation. (In seconds)
+     * [en] The duration of the animation. (In seconds)
+     *
+     * [zh] 动画的持续时间。 （以秒为单位）
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 动画的持续时间。 （以秒为单位）
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public duration: number;
     /**
@@ -95,14 +83,11 @@ export class AnimationData extends BaseObject {
      */
     public scale: number;
     /**
-     * - The fade in time of the animation. (In seconds)
+     * [en] The fade in time of the animation. (In seconds)
+     *
+     * [zh] 动画的淡入时间。 （以秒为单位）
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 动画的淡入时间。 （以秒为单位）
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public fadeInTime: number;
     /**
@@ -110,14 +95,11 @@ export class AnimationData extends BaseObject {
      */
     public cacheFrameRate: number;
     /**
-     * - The animation name.
+     * [en] The animation name.
+     *
+     * [zh] 动画名称。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 动画名称。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public name: string;
     /**

@@ -80,14 +80,11 @@ export const enum DisplayType {
     Path = 4
 }
 /**
- * - Bounding box type.
+ * [en] Bounding box type.
+ *
+ * [zh] 边界框类型。
+ *
  * @version DragonBones 5.0
- * @language en_US
- */
-/**
- * - 边界框类型。
- * @version DragonBones 5.0
- * @language zh_CN
  */
 export const enum BoundingBoxType {
     Rectangle = 0,
@@ -160,14 +157,11 @@ export const enum TimelineType {
     AnimationParameter = 42,
 }
 /**
- * - Offset mode.
+ * [en] Offset mode.
+ *
+ * [zh] 偏移模式。
+ *
  * @version DragonBones 5.5
- * @language en_US
- */
-/**
- * - 偏移模式。
- * @version DragonBones 5.5
- * @language zh_CN
  */
 export const enum OffsetMode {
     None,
@@ -175,59 +169,41 @@ export const enum OffsetMode {
     Override,
 }
 /**
- * - Animation fade out mode.
+ * [en] Animation fade out mode.
+ *
+ * [zh] 动画淡出模式。
+ *
  * @version DragonBones 4.5
- * @language en_US
- */
-/**
- * - 动画淡出模式。
- * @version DragonBones 4.5
- * @language zh_CN
  */
 export const enum AnimationFadeOutMode {
     /**
-     * - Fade out the animation states of the same layer.
-     * @language en_US
-     */
-    /**
-     * - 淡出同层的动画状态。
-     * @language zh_CN
+     * [en] Fade out the animation states of the same layer.
+     *
+     * [zh] 淡出同层的动画状态。
      */
     SameLayer = 1,
     /**
-     * - Fade out the animation states of the same group.
-     * @language en_US
-     */
-    /**
-     * - 淡出同组的动画状态。
-     * @language zh_CN
+     * [en] Fade out the animation states of the same group.
+     *
+     * [zh] 淡出同组的动画状态。
      */
     SameGroup = 2,
     /**
-     * - Fade out the animation states of the same layer and group.
-     * @language en_US
-     */
-    /**
-     * - 淡出同层并且同组的动画状态。
-     * @language zh_CN
+     * [en] Fade out the animation states of the same layer and group.
+     *
+     * [zh] 淡出同层并且同组的动画状态。
      */
     SameLayerAndGroup = 3,
     /**
-     * - Fade out of all animation states.
-     * @language en_US
-     */
-    /**
-     * - 淡出所有的动画状态。
-     * @language zh_CN
+     * [en] Fade out of all animation states.
+     *
+     * [zh] 淡出所有的动画状态。
      */
     All = 4,
     /**
-     * - Does not replace the animation state with the same name.
-     * @language en_US
-     */
-    /**
-     * - 不替换同名的动画状态。
-     * @language zh_CN
+     * [en] Does not replace the animation state with the same name.
+     *
+     * [zh] 不替换同名的动画状态。
      */
     Single = 5,
 }

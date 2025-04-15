@@ -27,38 +27,29 @@ import { AnimationData, AnimationConfig } from "../model/index.js";
 import { AnimationState, BlendState } from "./AnimationState.js";
 
 /**
- * - The animation player is used to play the animation data and manage the animation states.
+ * [en] The animation player is used to play the animation data and manage the animation states.
+ *
+ * [zh] 动画播放器用来播放动画数据和管理动画状态。
+ *
  * @see AnimationData
  * @see AnimationState
  * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - 动画播放器用来播放动画数据和管理动画状态。
- * @see AnimationData
- * @see AnimationState
- * @version DragonBones 3.0
- * @language zh_CN
  */
 export class Animation extends BaseObject {
     public static toString(): string {
         return "[class dragonBones.Animation]";
     }
     /**
-     * - The play speed of all animations. [0: Stop, (0~1): Slow, 1: Normal, (1~N): Fast]
+     * [en] The play speed of all animations. [0: Stop, (0~1): Slow, 1: Normal, (1~N): Fast]
+     *
+     * [zh] 所有动画的播放速度。 [0: 停止播放, (0~1): 慢速播放, 1: 正常播放, (1~N): 快速播放]
+     *
      * @default 1.0
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 所有动画的播放速度。 [0: 停止播放, (0~1): 慢速播放, 1: 正常播放, (1~N): 快速播放]
-     * @default 1.0
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public timeScale: number;
     /**
-     * Update bones and slots cachedFrameIndices.
+     * [en] Update bones and slots cachedFrameIndices.
      */
     private _animationDirty: boolean; //
     private _inheritTimeScale: number;
@@ -271,16 +262,12 @@ export class Animation extends BaseObject {
         }
     }
     /**
-     * - Clear all animations states.
-     * @see dragonBones.AnimationState
+     * [en] Clear all animations states.
+     *
+     * [zh] 清除所有的动画状态。
+     *
+     * @see AnimationState
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 清除所有的动画状态。
-     * @see dragonBones.AnimationState
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public reset(): void {
         for (const animationState of this._animationStates) {
@@ -293,18 +280,14 @@ export class Animation extends BaseObject {
         this._lastAnimationState = null;
     }
     /**
-     * - Pause a specific animation state.
-     * @param animationName - The name of animation state. (If not set, it will pause all animations)
-     * @see dragonBones.AnimationState
-     * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 暂停指定动画状态的播放。
+     * [en] Pause a specific animation state.
+     *
+     * [zh] 暂停指定动画状态的播放。
+     *
+     * @param animationName - [en] The name of animation state. (If not set, it will pause all animations)
      * @param animationName - 动画状态名称。 （如果未设置，则暂停所有动画）
-     * @see dragonBones.AnimationState
+     * @see AnimationState
      * @version DragonBones 3.0
-     * @language zh_CN
      */
     public stop(animationName: string | null = null): void {
         if (animationName !== null) {
@@ -320,24 +303,19 @@ export class Animation extends BaseObject {
         }
     }
     /**
-     * - Play animation with a specific animation config.
+     * [en] Play animation with a specific animation config.
      * The API is still in the experimental phase and may encounter bugs or stability or compatibility issues when used.
-     * @param animationConfig - The animation config.
-     * @returns The playing animation state.
-     * @see dragonBones.AnimationConfig
-     * @beta
-     * @version DragonBones 5.0
-     * @language en_US
-     */
-    /**
-     * - 通过指定的动画配置来播放动画。
+     *
+     * [zh] 通过指定的动画配置来播放动画。
      * 该 API 仍在实验阶段，使用时可能遭遇 bug 或稳定性或兼容性问题。
-     * @param animationConfig - 动画配置。
-     * @returns 播放的动画状态。
-     * @see dragonBones.AnimationConfig
+     *
+     * @param animationConfig - [en] The animation config.
+     * @param animationConfig - [zh] 动画配置。
+     * @returns [en] The playing animation state.
+     * @returns [zh] 播放的动画状态。
+     * @see AnimationConfig
      * @beta
      * @version DragonBones 5.0
-     * @language zh_CN
      */
     public playConfig(animationConfig: AnimationConfig): AnimationState | null {
         const animationName = animationConfig.animation;
@@ -485,28 +463,22 @@ export class Animation extends BaseObject {
         return animationState;
     }
     /**
-     * - Play a specific animation.
-     * @param animationName - The name of animation data. (If not set, The default animation will be played, or resume the animation playing from pause status, or replay the last playing animation)
-     * @param playTimes - Playing repeat times. [-1: Use default value of the animation data, 0: No end loop playing, [1~N]: Repeat N times] (default: -1)
-     * @returns The playing animation state.
+     * [en] Play a specific animation.
+     *
+     * [zh] 播放指定动画。
+     *
+     * @param animationName - [en] The name of animation data. (If not set, The default animation will be played, or resume the animation playing from pause status, or replay the last playing animation)
+     * @param animationName - [zh] 动画数据名称。 （如果未设置，则播放默认动画，或将暂停状态切换为播放状态，或重新播放之前播放的动画）
+     *
+     * @param playTimes - [en] Playing repeat times. [-1: Use default value of the animation data, 0: No end loop playing, [1~N]: Repeat N times] (default: -1)
+     * @param playTimes - [zh] 循环播放次数。 [-1: 使用动画数据默认值, 0: 无限循环播放, [1~N]: 循环播放 N 次] （默认: -1）
+     * @returns [en] The playing animation state.
+     * @returns [zh] 播放的动画状态。
      * @example
-     * <pre>
+     * ```ts
      *     armature.animation.play("walk");
-     * </pre>
+     * ```
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 播放指定动画。
-     * @param animationName - 动画数据名称。 （如果未设置，则播放默认动画，或将暂停状态切换为播放状态，或重新播放之前播放的动画）
-     * @param playTimes - 循环播放次数。 [-1: 使用动画数据默认值, 0: 无限循环播放, [1~N]: 循环播放 N 次] （默认: -1）
-     * @returns 播放的动画状态。
-     * @example
-     * <pre>
-     *     armature.animation.play("walk");
-     * </pre>
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public play(animationName: string | null = null, playTimes: number = -1): AnimationState | null {
         this._animationConfig.clear();
@@ -536,38 +508,36 @@ export class Animation extends BaseObject {
         return this._lastAnimationState;
     }
     /**
-     * - Fade in a specific animation.
-     * @param animationName - The name of animation data.
-     * @param fadeInTime - The fade in time. [-1: Use the default value of animation data, [0~N]: The fade in time (In seconds)] (Default: -1)
-     * @param playTimes - playing repeat times. [-1: Use the default value of animation data, 0: No end loop playing, [1~N]: Repeat N times] (Default: -1)
-     * @param layer - The blending layer, the animation states in high level layer will get the blending weights with high priority, when the total blending weights are more than 1.0, there will be no more weights can be allocated to the other animation states. (Default: 0)
-     * @param group - The blending group name, it is typically used to specify the substitution of multiple animation states blending. (Default: null)
-     * @param fadeOutMode - The fade out mode, which is typically used to specify alternate mode of multiple animation states blending. (Default: AnimationFadeOutMode.SameLayerAndGroup)
-     * @returns The playing animation state.
+     * [en] Fade in a specific animation.
+     *
+     * [zh] 淡入播放指定的动画。
+     *
+     * @param animationName - [en] The name of animation data.
+     * @param animationName - [zh] 动画数据名称。
+     *
+     * @param fadeInTime - [en] The fade in time. [-1: Use the default value of animation data, [0~N]: The fade in time (In seconds)] (Default: -1)
+     * @param fadeInTime - [zh] 淡入时间。 [-1: 使用动画数据默认值, [0~N]: 淡入时间 (以秒为单位)] （默认: -1）
+     *
+     * @param playTimes - [en] playing repeat times. [-1: Use the default value of animation data, 0: No end loop playing, [1~N]: Repeat N times] (Default: -1)
+     * @param playTimes - [zh] 播放次数。 [-1: 使用动画数据默认值, 0: 无限循环播放, [1~N]: 循环播放 N 次] （默认: -1）
+     *
+     * @param layer - [en] The blending layer, the animation states in high level layer will get the blending weights with high priority, when the total blending weights are more than 1.0, there will be no more weights can be allocated to the other animation states. (Default: 0)
+     * @param layer - [zh] 混合图层，图层高的动画状态会优先获取混合权重，当混合权重分配总和超过 1.0 时，剩余的动画状态将不能再获得权重分配。 （默认: 0）
+     *
+     * @param group - [en] The blending group name, it is typically used to specify the substitution of multiple animation states blending. (Default: null)
+     * @param group - [zh] 混合组名称，该属性通常用来指定多个动画状态混合时的相互替换关系。 （默认: null）
+     *
+     * @param fadeOutMode - [en] The fade out mode, which is typically used to specify alternate mode of multiple animation states blending. (Default: AnimationFadeOutMode.SameLayerAndGroup)
+     * @param fadeOutMode - [zh] 淡出模式，该属性通常用来指定多个动画状态混合时的相互替换模式。 （默认: AnimationFadeOutMode.SameLayerAndGroup）
+     *
+     * @returns [en] The playing animation state.
+     * @returns [zh] 播放的动画状态。
      * @example
-     * <pre>
+     * ```ts
      *     armature.animation.fadeIn("walk", 0.3, 0, 0, "normalGroup").resetToPose = false;
      *     armature.animation.fadeIn("attack", 0.3, 1, 0, "attackGroup").resetToPose = false;
-     * </pre>
+     * ```
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 淡入播放指定的动画。
-     * @param animationName - 动画数据名称。
-     * @param fadeInTime - 淡入时间。 [-1: 使用动画数据默认值, [0~N]: 淡入时间 (以秒为单位)] （默认: -1）
-     * @param playTimes - 播放次数。 [-1: 使用动画数据默认值, 0: 无限循环播放, [1~N]: 循环播放 N 次] （默认: -1）
-     * @param layer - 混合图层，图层高的动画状态会优先获取混合权重，当混合权重分配总和超过 1.0 时，剩余的动画状态将不能再获得权重分配。 （默认: 0）
-     * @param group - 混合组名称，该属性通常用来指定多个动画状态混合时的相互替换关系。 （默认: null）
-     * @param fadeOutMode - 淡出模式，该属性通常用来指定多个动画状态混合时的相互替换模式。 （默认: AnimationFadeOutMode.SameLayerAndGroup）
-     * @returns 播放的动画状态。
-     * @example
-     * <pre>
-     *     armature.animation.fadeIn("walk", 0.3, 0, 0, "normalGroup").resetToPose = false;
-     *     armature.animation.fadeIn("attack", 0.3, 1, 0, "attackGroup").resetToPose = false;
-     * </pre>
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public fadeIn(
         animationName: string, fadeInTime: number = -1.0, playTimes: number = -1,
@@ -584,22 +554,22 @@ export class Animation extends BaseObject {
         return this.playConfig(this._animationConfig);
     }
     /**
-     * - Play a specific animation from the specific time.
-     * @param animationName - The name of animation data.
-     * @param time - The start time point of playing. (In seconds)
-     * @param playTimes - Playing repeat times. [-1: Use the default value of animation data, 0: No end loop playing, [1~N]: Repeat N times] (Default: -1)
-     * @returns The played animation state.
+     * [en] Play a specific animation from the specific time.
+     *
+     * [zh] 从指定时间开始播放指定的动画。
+     *
+     * @param animationName - [en] The name of animation data.
+     * @param animationName - [zh] 动画数据名称。
+     *
+     * @param time - [en] The start time point of playing. (In seconds)
+     * @param time - [zh] 播放开始的时间。 (以秒为单位)
+     *
+     * @param playTimes - [en] Playing repeat times. [-1: Use the default value of animation data, 0: No end loop playing, [1~N]: Repeat N times] (Default: -1)
+     * @param playTimes - [zh] 循环播放次数。 [-1: 使用动画数据默认值, 0: 无限循环播放, [1~N]: 循环播放 N 次] （默认: -1）
+     *
+     * @returns [en] The played animation state.
+     * @returns [zh] 播放的动画状态。
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 从指定时间开始播放指定的动画。
-     * @param animationName - 动画数据名称。
-     * @param time - 播放开始的时间。 (以秒为单位)
-     * @param playTimes - 循环播放次数。 [-1: 使用动画数据默认值, 0: 无限循环播放, [1~N]: 循环播放 N 次] （默认: -1）
-     * @returns 播放的动画状态。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public gotoAndPlayByTime(animationName: string, time: number = 0.0, playTimes: number = -1): AnimationState | null {
         this._animationConfig.clear();
@@ -612,22 +582,23 @@ export class Animation extends BaseObject {
         return this.playConfig(this._animationConfig);
     }
     /**
-     * - Play a specific animation from the specific frame.
-     * @param animationName - The name of animation data.
-     * @param frame - The start frame of playing.
-     * @param playTimes - Playing repeat times. [-1: Use the default value of animation data, 0: No end loop playing, [1~N]: Repeat N times] (Default: -1)
-     * @returns The played animation state.
+     * [en] Play a specific animation from the specific frame.
+     *
+     * [zh] 从指定帧开始播放指定的动画。
+     *
+     * @param animationName - [en] The name of animation data.
+     * @param animationName - [zh] 动画数据名称。
+     *
+     * @param frame - [en] The start frame of playing.
+     * @param frame - [zh] 播放开始的帧数。
+     *
+     * @param playTimes - [en] Playing repeat times. [-1: Use the default value of animation data, 0: No end loop playing, [1~N]: Repeat N times] (Default: -1)
+     * @param playTimes - [zh] 播放次数。 [-1: 使用动画数据默认值, 0: 无限循环播放, [1~N]: 循环播放 N 次] （默认: -1）
+     *
+     * @returns [en] The played animation state.
+     * @returns [zh] 播放的动画状态。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 从指定帧开始播放指定的动画。
-     * @param animationName - 动画数据名称。
-     * @param frame - 播放开始的帧数。
-     * @param playTimes - 播放次数。 [-1: 使用动画数据默认值, 0: 无限循环播放, [1~N]: 循环播放 N 次] （默认: -1）
-     * @returns 播放的动画状态。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public gotoAndPlayByFrame(animationName: string, frame: number = 0, playTimes: number = -1): AnimationState | null {
         this._animationConfig.clear();
@@ -644,22 +615,23 @@ export class Animation extends BaseObject {
         return this.playConfig(this._animationConfig);
     }
     /**
-     * - Play a specific animation from the specific progress.
-     * @param animationName - The name of animation data.
-     * @param progress - The start progress value of playing.
-     * @param playTimes - Playing repeat times. [-1: Use the default value of animation data, 0: No end loop playing, [1~N]: Repeat N times] (Default: -1)
-     * @returns The played animation state.
+     * [en] Play a specific animation from the specific progress.
+     *
+     * [zh] 从指定进度开始播放指定的动画。
+     *
+     * @param animationName - [en] The name of animation data.
+     * @param animationName - [zh] 动画数据名称。
+     *
+     * @param progress - [en] The start progress value of playing.
+     * @param progress - [zh] 开始播放的进度。
+     *
+     * @param playTimes - [en] Playing repeat times. [-1: Use the default value of animation data, 0: No end loop playing, [1~N]: Repeat N times] (Default: -1)
+     * @param playTimes - [zh] 播放次数。 [-1: 使用动画数据默认值, 0: 无限循环播放, [1~N]: 循环播放 N 次] （默认: -1）
+     *
+     * @returns [en] The played animation state.
+     * @returns [zh] 播放的动画状态。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 从指定进度开始播放指定的动画。
-     * @param animationName - 动画数据名称。
-     * @param progress - 开始播放的进度。
-     * @param playTimes - 播放次数。 [-1: 使用动画数据默认值, 0: 无限循环播放, [1~N]: 循环播放 N 次] （默认: -1）
-     * @returns 播放的动画状态。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public gotoAndPlayByProgress(animationName: string, progress: number = 0.0, playTimes: number = -1): AnimationState | null {
         this._animationConfig.clear();
@@ -676,20 +648,20 @@ export class Animation extends BaseObject {
         return this.playConfig(this._animationConfig);
     }
     /**
-     * - Stop a specific animation at the specific time.
-     * @param animationName - The name of animation data.
-     * @param time - The stop time. (In seconds)
-     * @returns The played animation state.
+     * [en] Stop a specific animation at the specific time.
+     *
+     * [zh] 在指定时间停止指定动画播放
+     *
+     * @param animationName - [en] The name of animation data.
+     * @param animationName - [zh] 动画数据名称。
+     *
+     * @param time - [en] The stop time. (In seconds)
+     * @param time - [zh] 停止的时间。 (以秒为单位)
+     *
+     * @returns [en] The played animation state.
+     * @returns [zh] 播放的动画状态。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 在指定时间停止指定动画播放
-     * @param animationName - 动画数据名称。
-     * @param time - 停止的时间。 (以秒为单位)
-     * @returns 播放的动画状态。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public gotoAndStopByTime(animationName: string, time: number = 0.0): AnimationState | null {
         const animationState = this.gotoAndPlayByTime(animationName, time, 1);
@@ -700,20 +672,20 @@ export class Animation extends BaseObject {
         return animationState;
     }
     /**
-     * - Stop a specific animation at the specific frame.
-     * @param animationName - The name of animation data.
-     * @param frame - The stop frame.
-     * @returns The played animation state.
+     * [en] Stop a specific animation at the specific frame.
+     *
+     * [zh] 在指定帧停止指定动画的播放
+     *
+     * @param animationName - [en] The name of animation data.
+     * @param animationName - [zh] 动画数据名称。
+     *
+     * @param frame - [en] The stop frame.
+     * @param frame - [zh] 停止的帧数。
+     *
+     * @returns [en] The played animation state.
+     * @returns [zh] 播放的动画状态。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 在指定帧停止指定动画的播放
-     * @param animationName - 动画数据名称。
-     * @param frame - 停止的帧数。
-     * @returns 播放的动画状态。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public gotoAndStopByFrame(animationName: string, frame: number = 0): AnimationState | null {
         const animationState = this.gotoAndPlayByFrame(animationName, frame, 1);
@@ -724,20 +696,20 @@ export class Animation extends BaseObject {
         return animationState;
     }
     /**
-     * - Stop a specific animation at the specific progress.
-     * @param animationName - The name of animation data.
-     * @param progress - The stop progress value.
-     * @returns The played animation state.
+     * [en] Stop a specific animation at the specific progress.
+     *
+     * [zh] 在指定的进度停止指定的动画播放。
+     *
+     * @param animationName - [en] The name of animation data.
+     * @param animationName - [zh] 动画数据名称。
+     *
+     * @param progress - [en] The stop progress value.
+     * @param progress - [zh] 停止进度。
+     *
+     * @returns [en] The played animation state.
+     * @returns [zh] 播放的动画状态。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 在指定的进度停止指定的动画播放。
-     * @param animationName - 动画数据名称。
-     * @param progress - 停止进度。
-     * @returns 播放的动画状态。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public gotoAndStopByProgress(animationName: string, progress: number = 0.0): AnimationState | null {
         const animationState = this.gotoAndPlayByProgress(animationName, progress, 1);
@@ -764,30 +736,23 @@ export class Animation extends BaseObject {
         return blendStates[name];
     }
     /**
-     * - Get a specific animation state.
-     * @param animationName - The name of animation state.
-     * @param layer - The layer of find animation states. [-1: Find all layers, [0~N]: Specified layer] (default: -1)
+     * [en] Get a specific animation state.
+     *
+     * [zh] 获取指定的动画状态。
+     *
+     * @param animationName - [en] The name of animation state.
+     * @param animationName - [zh] 动画状态名称。
+     *
+     * @param layer - [en] The layer of find animation states. [-1: Find all layers, [0~N]: Specified layer] (default: -1)
+     * @param layer - [zh] 查找动画状态的层级。 [-1: 查找所有层级, [0~N]: 指定层级] （默认: -1）
+     *
      * @example
-     * <pre>
+     * ```ts
      *     armature.animation.play("walk");
      *     let walkState = armature.animation.getState("walk");
      *     walkState.timeScale = 0.5;
-     * </pre>
+     * ```
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 获取指定的动画状态。
-     * @param animationName - 动画状态名称。
-     * @param layer - 查找动画状态的层级。 [-1: 查找所有层级, [0~N]: 指定层级] （默认: -1）
-     * @example
-     * <pre>
-     *     armature.animation.play("walk");
-     *     let walkState = armature.animation.getState("walk");
-     *     walkState.timeScale = 0.5;
-     * </pre>
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public getState(animationName: string, layer: number = -1): AnimationState | null {
         let i = this._animationStates.length;
@@ -801,46 +766,37 @@ export class Animation extends BaseObject {
         return null;
     }
     /**
-     * - Check whether a specific animation data is included.
-     * @param animationName - The name of animation data.
-     * @see dragonBones.AnimationData
+     * [en] Check whether a specific animation data is included.
+     *
+     * [zh] 检查是否包含指定的动画数据
+     *
+     * @param animationName - [en] The name of animation data.
+     * @param animationName - [zh] 动画数据名称。
+     *
+     * @see AnimationData
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 检查是否包含指定的动画数据
-     * @param animationName - 动画数据名称。
-     * @see dragonBones.AnimationData
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public hasAnimation(animationName: string): boolean {
         return animationName in this._animations;
     }
     /**
-     * - Get all the animation states.
+     * [en] Get all the animation states.
+     *
+     * [zh] 获取所有的动画状态
+     *
      * @version DragonBones 5.1
-     * @language en_US
-     */
-    /**
-     * - 获取所有的动画状态
-     * @version DragonBones 5.1
-     * @language zh_CN
      */
     public getStates(): ReadonlyArray<AnimationState> {
         return this._animationStates;
     }
     /**
-     * - Check whether there is an animation state is playing
-     * @see dragonBones.AnimationState
+     * [en] Check whether there is an animation state is playing
+     *
+     * [zh] 检查是否有动画状态正在播放
+     *
+     * @see AnimationState
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 检查是否有动画状态正在播放
-     * @see dragonBones.AnimationState
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public get isPlaying(): boolean {
         for (const animationState of this._animationStates) {
@@ -852,16 +808,12 @@ export class Animation extends BaseObject {
         return false;
     }
     /**
-     * - Check whether all the animation states' playing were finished.
-     * @see dragonBones.AnimationState
+     * [en] Check whether all the animation states' playing were finished.
+     *
+     * [zh] 检查是否所有的动画状态均已播放完毕。
+     *
+     * @see AnimationState
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 检查是否所有的动画状态均已播放完毕。
-     * @see dragonBones.AnimationState
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public get isCompleted(): boolean {
         for (const animationState of this._animationStates) {
@@ -873,42 +825,32 @@ export class Animation extends BaseObject {
         return this._animationStates.length > 0;
     }
     /**
-     * - The name of the last playing animation state.
+     * [en] The name of the last playing animation state.
+     *
+     * [zh] 上一个播放的动画状态名称
+     *
      * @see #lastAnimationState
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 上一个播放的动画状态名称
-     * @see #lastAnimationState
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public get lastAnimationName(): string {
         return this._lastAnimationState !== null ? this._lastAnimationState.name : "";
     }
     /**
-     * - The name of all animation data
+     * [en] The name of all animation data
+     *
+     * [zh] 所有动画数据的名称
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 所有动画数据的名称
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public get animationNames(): ReadonlyArray<string> {
         return this._animationNames;
     }
     /**
-     * - All animation data.
+     * [en] All animation data.
+     *
+     * [zh] 所有的动画数据。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 所有的动画数据。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public get animations(): Record<string, AnimationData> {
         return this._animations;
@@ -930,32 +872,24 @@ export class Animation extends BaseObject {
         }
     }
     /**
-     * - An AnimationConfig instance that can be used quickly.
-     * @see dragonBones.AnimationConfig
+     * [en] An AnimationConfig instance that can be used quickly.
+     *
+     * [zh] 一个可以快速使用的动画配置实例。
+     *
+     * @see AnimationConfig
      * @version DragonBones 5.0
-     * @language en_US
-     */
-    /**
-     * - 一个可以快速使用的动画配置实例。
-     * @see dragonBones.AnimationConfig
-     * @version DragonBones 5.0
-     * @language zh_CN
      */
     public get animationConfig(): AnimationConfig {
         this._animationConfig.clear();
         return this._animationConfig;
     }
     /**
-     * - The last playing animation state
-     * @see dragonBones.AnimationState
+     * [en] The last playing animation state
+     *
+     * [zh] 上一个播放的动画状态
+     *
+     * @see AnimationState
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 上一个播放的动画状态
-     * @see dragonBones.AnimationState
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public get lastAnimationState(): AnimationState | null {
         return this._lastAnimationState;

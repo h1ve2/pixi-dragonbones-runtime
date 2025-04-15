@@ -26,14 +26,11 @@ import {TextureAtlasData, TextureData} from "../model/index.js";
 import {groupD8, Rectangle, Texture} from "pixi.js";
 
 /**
- * - The PixiJS texture atlas data.
+ * [en] The PixiJS texture atlas data.
+ *
+ * [zh] PixiJS 贴图集数据。
+ *
  * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - PixiJS 贴图集数据。
- * @version DragonBones 3.0
- * @language zh_CN
  */
 export class PixiTextureAtlasData extends TextureAtlasData {
     public static toString(): string {
@@ -60,14 +57,11 @@ export class PixiTextureAtlasData extends TextureAtlasData {
     }
 
     /**
-     * - The PixiJS texture.
+     * [en] The PixiJS texture.
+     *
+     * [zh] PixiJS 贴图。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - PixiJS 贴图。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public get renderTexture(): Texture | null {
         return this._renderTexture;

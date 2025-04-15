@@ -29,14 +29,11 @@ import {PixiTextureData, PixiTextureAtlasData} from "./PixiTextureAtlasData.js";
 import {Container, MeshSimple, Sprite} from "pixi.js";
 
 /**
- * - The PixiJS slot.
+ * [en] The PixiJS slot.
+ *
+ * [zh] PixiJS 插槽。
+ *
  * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - PixiJS 插槽。
- * @version DragonBones 3.0
- * @language zh_CN
  */
 export class PixiSlot extends Slot {
     public static toString(): string {
