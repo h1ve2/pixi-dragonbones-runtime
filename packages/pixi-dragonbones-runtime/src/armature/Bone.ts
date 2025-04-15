@@ -29,39 +29,29 @@ import { Surface } from "./Surface.js";
 import { TransformObject } from "./TransformObject.js";
 
 /**
- * - Bone is one of the most important logical units in the armature animation system,
+ * [en] Bone is one of the most important logical units in the armature animation system,
  * and is responsible for the realization of translate, rotation, scaling in the animations.
  * A armature can contain multiple bones.
- * @see dragonBones.BoneData
- * @see dragonBones.Armature
- * @see dragonBones.Slot
- * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - 骨骼在骨骼动画体系中是最重要的逻辑单元之一，负责动画中的平移、旋转、缩放的实现。
+ *
+ * [zh] 骨骼在骨骼动画体系中是最重要的逻辑单元之一，负责动画中的平移、旋转、缩放的实现。
  * 一个骨架中可以包含多个骨骼。
- * @see dragonBones.BoneData
- * @see dragonBones.Armature
- * @see dragonBones.Slot
+ *
+ * @see BoneData
+ * @see Armature
+ * @see Slot
  * @version DragonBones 3.0
- * @language zh_CN
  */
 export class Bone extends TransformObject {
     public static toString(): string {
         return "[class dragonBones.Bone]";
     }
     /**
-     * - The offset mode.
+     * [en] The offset mode.
+     *
+     * [zh] 偏移模式。
+     *
      * @see #offset
      * @version DragonBones 5.5
-     * @language en_US
-     */
-    /**
-     * - 偏移模式。
-     * @see #offset
-     * @version DragonBones 5.5
-     * @language zh_CN
      */
     public offsetMode: OffsetMode;
     /**
@@ -461,44 +451,31 @@ export class Bone extends TransformObject {
         }
     }
     /**
-     * - Forces the bone to update the transform in the next frame.
+     * [en] Forces the bone to update the transform in the next frame.
      * When the bone is not animated or its animation state is finished, the bone will not continue to update,
      * and when the skeleton must be updated for some reason, the method needs to be called explicitly.
-     * @example
-     * <pre>
-     *     let bone = armature.getBone("arm");
-     *     bone.offset.scaleX = 2.0;
-     *     bone.invalidUpdate();
-     * </pre>
-     * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 强制骨骼在下一帧更新变换。
+     *
+     * [zh] 强制骨骼在下一帧更新变换。
      * 当该骨骼没有动画状态或其动画状态播放完成时，骨骼将不在继续更新，而此时由于某些原因必须更新骨骼时，则需要显式调用该方法。
+     *
      * @example
-     * <pre>
+     * ```ts
      *     let bone = armature.getBone("arm");
      *     bone.offset.scaleX = 2.0;
      *     bone.invalidUpdate();
-     * </pre>
+     * ```
      * @version DragonBones 3.0
-     * @language zh_CN
      */
     public invalidUpdate(): void {
         this._transformDirty = true;
     }
     /**
-     * - Check whether the bone contains a specific bone.
-     * @see dragonBones.Bone
+     * [en] Check whether the bone contains a specific bone.
+     *
+     * [zh] 检查该骨骼是否包含特定的骨骼。
+     *
+     * @see Bone
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 检查该骨骼是否包含特定的骨骼。
-     * @see dragonBones.Bone
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public contains(value: Bone): boolean {
         if (value === this) {
@@ -513,31 +490,23 @@ export class Bone extends TransformObject {
         return ancestor === this;
     }
     /**
-     * - The bone data.
+     * [en] The bone data.
+     *
+     * [zh] 骨骼数据。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 骨骼数据。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public get boneData(): BoneData {
         return this._boneData;
     }
     /**
-     * - The visible of all slots in the bone.
+     * [en] The visible of all slots in the bone.
+     *
+     * [zh] 此骨骼所有插槽的可见。
+     *
      * @default true
-     * @see dragonBones.Slot#visible
+     * @see Slot#visible
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 此骨骼所有插槽的可见。
-     * @default true
-     * @see dragonBones.Slot#visible
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public get visible(): boolean {
         return this._visible;
@@ -556,27 +525,21 @@ export class Bone extends TransformObject {
         }
     }
     /**
-     * - The bone name.
+     * [en] The bone name.
+     *
+     * [zh] 骨骼名称。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 骨骼名称。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public get name(): string {
         return this._boneData.name;
     }
     /**
-     * - The parent bone to which it belongs.
+     * [en] The parent bone to which it belongs.
+     *
+     * [zh] 所属的父骨骼。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 所属的父骨骼。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public get parent(): Bone | null {
         return this._parent;

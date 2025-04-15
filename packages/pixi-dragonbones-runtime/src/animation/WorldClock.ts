@@ -24,74 +24,57 @@
 import { IAnimatable } from "./IAnimatable.js";
 
 /**
- * - Worldclock provides clock support for animations, advance time for each IAnimatable object added to the instance.
- * @see dragonBones.IAnimateble
- * @see dragonBones.Armature
+ * [en] Worldclock provides clock support for animations, advance time for each IAnimatable object added to the instance.
+ *
+ * [zh] WorldClock 对动画提供时钟支持，为每个加入到该实例的 IAnimatable 对象更新时间。
+ *
+ * @see IAnimateble
+ * @see Armature
  * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - WorldClock 对动画提供时钟支持，为每个加入到该实例的 IAnimatable 对象更新时间。
- * @see dragonBones.IAnimateble
- * @see dragonBones.Armature
- * @version DragonBones 3.0
- * @language zh_CN
  */
 export class WorldClock {
     /**
-     * - Current time. (In seconds)
+     * [en] Current time. (In seconds)
+     *
+     * [zh] 当前的时间。 (以秒为单位)
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 当前的时间。 (以秒为单位)
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public time: number = 0.0;
     /**
-     * - The play speed, used to control animation speed-shift play.
+     * [en] The play speed, used to control animation speed-shift play.
      * [0: Stop play, (0~1): Slow play, 1: Normal play, (1~N): Fast play]
-     * @default 1.0
-     * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 播放速度，用于控制动画变速播放。
+     *
+     * [zh] 播放速度，用于控制动画变速播放。
      * [0: 停止播放, (0~1): 慢速播放, 1: 正常播放, (1~N): 快速播放]
+     *
      * @default 1.0
      * @version DragonBones 3.0
-     * @language zh_CN
      */
     public timeScale: number = 1.0;
 
     private readonly _animatebles: Array<IAnimatable | null> = [];
     /**
-     * - Creating a Worldclock instance. Typically, you do not need to create Worldclock instance.
+     * [en] Creating a Worldclock instance. Typically, you do not need to create Worldclock instance.
      * When multiple Worldclock instances are running at different speeds, can achieving some specific animation effects, such as bullet time.
-     * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 创建一个 WorldClock 实例。通常并不需要创建 WorldClock 实例。
+     *
+     * [zh] 创建一个 WorldClock 实例。通常并不需要创建 WorldClock 实例。
      * 当多个 WorldClock 实例使用不同的速度运行时，可以实现一些特殊的动画效果，比如子弹时间等。
+     *
      * @version DragonBones 3.0
-     * @language zh_CN
      */
     public constructor(time: number = 0.0) {
         this.time = time;
     }
     /**
-     * - Advance time for all IAnimatable instances.
-     * @param passedTime - Passed time. [-1: Automatically calculates the time difference between the current frame and the previous frame, [0~N): Passed time] (In seconds)
+     * [en] Advance time for all IAnimatable instances.
+     *
+     * [zh] 为所有的 IAnimatable 实例更新时间。
+     *
+     * @param passedTime - [en] Passed time. [-1: Automatically calculates the time difference between the current frame and the previous frame, [0~N): Passed time] (In seconds)
+     * @param passedTime - [zh] 前进的时间。 [-1: 自动计算当前帧与上一帧的时间差, [0~N): 前进的时间] (以秒为单位)
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 为所有的 IAnimatable 实例更新时间。
-     * @param passedTime - 前进的时间。 [-1: 自动计算当前帧与上一帧的时间差, [0~N): 前进的时间] (以秒为单位)
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public advanceTime(passedTime: number): void {
         if (passedTime === 0.0) {
@@ -142,31 +125,27 @@ export class WorldClock {
         }
     }
     /**
-     * - Check whether contains a specific instance of IAnimatable.
-     * @param value - The IAnimatable instance.
+     * [en] Check whether contains a specific instance of IAnimatable.
+     *
+     * [zh] 检查是否包含特定的 IAnimatable 实例。
+     *
+     * @param value - [en] The IAnimatable instance.
+     * @param value - [zh] IAnimatable 实例。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 检查是否包含特定的 IAnimatable 实例。
-     * @param value - IAnimatable 实例。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public contains(value: IAnimatable): boolean {
         return this._animatebles.indexOf(value) >= 0
     }
     /**
-     * - Add IAnimatable instance.
-     * @param value - The IAnimatable instance.
+     * [en] Add IAnimatable instance.
+     *
+     * [zh] 添加 IAnimatable 实例。
+     *
+     * @param value - [en] The IAnimatable instance.
+     * @param value - [zh] IAnimatable 实例。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 添加 IAnimatable 实例。
-     * @param value - IAnimatable 实例。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public add(value: IAnimatable): void {
         if (this._animatebles.indexOf(value) < 0) {
@@ -175,16 +154,14 @@ export class WorldClock {
         }
     }
     /**
-     * - Removes a specified IAnimatable instance.
-     * @param value - The IAnimatable instance.
+     * [en] Removes a specified IAnimatable instance.
+     *
+     * [zh] 移除特定的 IAnimatable 实例。
+     *
+     * @param value - [en] The IAnimatable instance.
+     * @param value - [zh] IAnimatable 实例。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 移除特定的 IAnimatable 实例。
-     * @param value - IAnimatable 实例。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public remove(value: IAnimatable): void {
         const index = this._animatebles.indexOf(value);
@@ -194,14 +171,11 @@ export class WorldClock {
         }
     }
     /**
-     * - Clear all IAnimatable instances.
+     * [en] Clear all IAnimatable instances.
+     *
+     * [zh] 清除所有的 IAnimatable 实例。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 清除所有的 IAnimatable 实例。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public clear(): void {
         for (const animatable of this._animatebles) {

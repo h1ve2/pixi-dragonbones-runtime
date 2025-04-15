@@ -2414,14 +2414,11 @@ export class ObjectDataParser extends DataParser {
 
     private static _objectDataParserInstance: ObjectDataParser | null = null;
     /**
-     * - Deprecated, please refer to {@link dragonBones.BaseFactory#parseDragonBonesData()}.
+     * [en] Deprecated, please refer to {@link BaseFactory#parseDragonBonesData()}.
+     *
+     * [zh] 已废弃，请参考 {@link BaseFactory#parseDragonBonesData()}。
+     *
      * @deprecated
-     * @language en_US
-     */
-    /**
-     * - 已废弃，请参考 {@link dragonBones.BaseFactory#parseDragonBonesData()}。
-     * @deprecated
-     * @language zh_CN
      */
     public static getInstance(): ObjectDataParser {
         if (ObjectDataParser._objectDataParserInstance === null) {

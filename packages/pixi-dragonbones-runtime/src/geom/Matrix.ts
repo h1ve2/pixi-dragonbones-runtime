@@ -9,10 +9,10 @@
  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
  * the Software, and to permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -22,92 +22,65 @@
  */
 
 /**
- * - 2D Transform matrix.
+ * [en] 2D Transform matrix.
+ *
+ * [zh] 2D 转换矩阵。
+ *
  * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - 2D 转换矩阵。
- * @version DragonBones 3.0
- * @language zh_CN
  */
 export class Matrix {
     /**
-     * - The value that affects the positioning of pixels along the x axis when scaling or rotating an image.
+     * [en] The value that affects the positioning of pixels along the x axis when scaling or rotating an image.
+     *
+     * [zh] 缩放或旋转图像时影响像素沿 x 轴定位的值。
+     *
      * @default 1.0
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 缩放或旋转图像时影响像素沿 x 轴定位的值。
-     * @default 1.0
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public a: number;
     /**
-     * - The value that affects the positioning of pixels along the y axis when rotating or skewing an image.
+     * [en] The value that affects the positioning of pixels along the y axis when rotating or skewing an image.
+     *
+     * [zh] 旋转或倾斜图像时影响像素沿 y 轴定位的值。
+     *
      * @default 0.0
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 旋转或倾斜图像时影响像素沿 y 轴定位的值。
-     * @default 0.0
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public b: number;
     /**
-     * - The value that affects the positioning of pixels along the x axis when rotating or skewing an image.
+     * [en] The value that affects the positioning of pixels along the x axis when rotating or skewing an image.
+     *
+     * [zh] 旋转或倾斜图像时影响像素沿 x 轴定位的值。
+     *
      * @default 0.0
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 旋转或倾斜图像时影响像素沿 x 轴定位的值。
-     * @default 0.0
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public c: number;
     /**
-     * - The value that affects the positioning of pixels along the y axis when scaling or rotating an image.
+     * [en] The value that affects the positioning of pixels along the y axis when scaling or rotating an image.
+     *
+     * [zh] 缩放或旋转图像时影响像素沿 y 轴定位的值。
+     *
      * @default 1.0
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 缩放或旋转图像时影响像素沿 y 轴定位的值。
-     * @default 1.0
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public d: number;
     /**
-     * - The distance by which to translate each point along the x axis.
+     * [en] The distance by which to translate each point along the x axis.
+     *
+     * [zh] 沿 x 轴平移每个点的距离。
+     *
      * @default 0.0
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 沿 x 轴平移每个点的距离。
-     * @default 0.0
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public tx: number;
     /**
-     * - The distance by which to translate each point along the y axis.
+     * [en] The distance by which to translate each point along the y axis.
+     *
+     * [zh] 沿 y 轴平移每个点的距离。
+     *
      * @default 0.0
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 沿 y 轴平移每个点的距离。
-     * @default 0.0
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public ty: number;
     /**
@@ -156,16 +129,13 @@ export class Matrix {
         return this;
     }
     /**
-     * - Convert to unit matrix.
+     * [en] Convert to unit matrix.
      * The resulting matrix has the following properties: a=1, b=0, c=0, d=1, tx=0, ty=0.
-     * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 转换为单位矩阵。
+     *
+     * [zh] 转换为单位矩阵。
      * 该矩阵具有以下属性：a=1、b=0、c=0、d=1、tx=0、ty=0。
+     *
      * @version DragonBones 3.0
-     * @language zh_CN
      */
     public identity(): Matrix {
         this.a = this.d = 1.0;
@@ -175,16 +145,14 @@ export class Matrix {
         return this;
     }
     /**
-     * - Multiplies the current matrix with another matrix.
-     * @param value - The matrix that needs to be multiplied.
+     * [en] Multiplies the current matrix with another matrix.
+     *
+     * [zh] 将当前矩阵与另一个矩阵相乘。
+     *
+     * @param value - [en] The matrix that needs to be multiplied.
+     * @param value - [zh] 需要相乘的矩阵。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 将当前矩阵与另一个矩阵相乘。
-     * @param value - 需要相乘的矩阵。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public concat(value: Matrix): Matrix {
         let aA = this.a * value.a;
@@ -218,14 +186,11 @@ export class Matrix {
         return this;
     }
     /**
-     * - Convert to inverse matrix.
+     * [en] Convert to inverse matrix.
+     *
+     * [zh] 转换为逆矩阵。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 转换为逆矩阵。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public invert(): Matrix {
         let aA = this.a;
@@ -270,22 +235,23 @@ export class Matrix {
         return this;
     }
     /**
-     * - Apply a matrix transformation to a specific point.
-     * @param x - X coordinate.
-     * @param y - Y coordinate.
-     * @param result - The point after the transformation is applied.
-     * @param delta - Whether to ignore tx, ty's conversion to point.
+     * [en] Apply a matrix transformation to a specific point.
+     *
+     * [zh] 将矩阵转换应用于特定点。
+     *
+     * @param x - [en] X coordinate.
+     * @param x - [zh] 横坐标。
+     *
+     * @param y - [en] Y coordinate.
+     * @param y - [zh] 纵坐标。
+     *
+     * @param result - [en] The point after the transformation is applied.
+     * @param result - [zh] 应用转换之后的点。
+     *
+     * @param delta - [en] Whether to ignore tx, ty's conversion to point.
+     * @param delta - [zh] 是否忽略 tx，ty 对点的转换。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 将矩阵转换应用于特定点。
-     * @param x - 横坐标。
-     * @param y - 纵坐标。
-     * @param result - 应用转换之后的点。
-     * @param delta - 是否忽略 tx，ty 对点的转换。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public transformPoint(x: number, y: number, result: { x: number, y: number }, delta: boolean = false): void {
         result.x = this.a * x + this.c * y;

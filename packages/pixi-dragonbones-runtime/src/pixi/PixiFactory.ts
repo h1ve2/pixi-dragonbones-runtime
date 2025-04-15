@@ -41,14 +41,11 @@ interface BuildArmatureOptions {
 }
 
 /**
- * - The PixiJS factory.
+ * [en] The PixiJS factory.
+ *
+ * [zh] PixiJS 工厂。
+ *
  * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - PixiJS 工厂。
- * @version DragonBones 3.0
- * @language zh_CN
  */
 export class PixiFactory extends BaseFactory {
     private static _dragonBonesInstance: DragonBones = null as any;
@@ -72,14 +69,11 @@ export class PixiFactory extends BaseFactory {
     public static useSharedTicker: boolean = true;
 
     /**
-     * - A global factory instance that can be used directly.
+     * [en] A global factory instance that can be used directly.
+     *
+     * [zh] 一个可以直接使用的全局工厂实例。
+     *
      * @version DragonBones 4.7
-     * @language en_US
-     */
-    /**
-     * - 一个可以直接使用的全局工厂实例。
-     * @version DragonBones 4.7
-     * @language zh_CN
      */
     public static get factory(): PixiFactory {
         if (PixiFactory._factory === null) {
@@ -93,7 +87,6 @@ export class PixiFactory extends BaseFactory {
     /**
      * - 一个获取全局工厂实例(单例)的方法, 和get factory相比, 优点是可以传参数。
      * @version DragonBones 4.7
-     * @language zh_CN
      */
     public static newInstance(useSharedTicker = true): PixiFactory {
         if (PixiFactory._factory === null) {
@@ -155,36 +148,31 @@ export class PixiFactory extends BaseFactory {
     }
 
     /**
-     * - Create a armature from cached DragonBonesData instances and TextureAtlasData instances, then use the {@link #clock} to update it.
+     * [en] Create a armature from cached DragonBonesData instances and TextureAtlasData instances, then use the {@link #clock} to update it.
      * The difference is that the armature created by {@link #buildArmature} is not WorldClock instance update.
-     * @param armatureName - The armature data name.
-     * @param dragonBonesName - The cached name of the DragonBonesData instance. (If not set, all DragonBonesData instances are retrieved, and when multiple DragonBonesData instances contain a the same name armature data, it may not be possible to accurately create a specific armature)
-     * @param skinName - The skin name, you can set a different ArmatureData name to share it's skin data. (If not set, use the default skin data)
-     * @returns The armature display container.
-     * @see dragonBones.IArmatureProxy
-     * @see dragonBones.BaseFactory#buildArmature
-     * @version DragonBones 4.5
-     * @example
-     * <pre>
-     *     let armatureDisplay = factory.buildArmatureDisplay("armatureName", "dragonBonesName");
-     * </pre>
-     * @language en_US
-     */
-    /**
-     * - 通过缓存的 DragonBonesData 实例和 TextureAtlasData 实例创建一个骨架，并用 {@link #clock} 更新该骨架。
+     *
+     * [zh] 通过缓存的 DragonBonesData 实例和 TextureAtlasData 实例创建一个骨架，并用 {@link #clock} 更新该骨架。
      * 区别在于由 {@link #buildArmature} 创建的骨架没有 WorldClock 实例驱动。
-     * @param armatureName - 骨架数据名称。
-     * @param dragonBonesName - DragonBonesData 实例的缓存名称。 （如果未设置，将检索所有的 DragonBonesData 实例，当多个 DragonBonesData 实例中包含同名的骨架数据时，可能无法准确的创建出特定的骨架）
-     * @param skinName - 皮肤名称，可以设置一个其他骨架数据名称来共享其皮肤数据。 （如果未设置，则使用默认的皮肤数据）
-     * @returns 骨架的显示容器。
-     * @see dragonBones.IArmatureProxy
-     * @see dragonBones.BaseFactory#buildArmature
+     *
+     * @param armatureName - [en] The armature data name.
+     * @param armatureName - [zh] 骨架数据名称。
+     *
+     * @param dragonBonesName - [en] The cached name of the DragonBonesData instance. (If not set, all DragonBonesData instances are retrieved, and when multiple DragonBonesData instances contain a the same name armature data, it may not be possible to accurately create a specific armature)
+     * @param dragonBonesName - [zh] DragonBonesData 实例的缓存名称。 （如果未设置，将检索所有的 DragonBonesData 实例，当多个 DragonBonesData 实例中包含同名的骨架数据时，可能无法准确的创建出特定的骨架）
+     *
+     * @param skinName - [en] The skin name, you can set a different ArmatureData name to share it's skin data. (If not set, use the default skin data)
+     * @param skinName - [zh] 皮肤名称，可以设置一个其他骨架数据名称来共享其皮肤数据。 （如果未设置，则使用默认的皮肤数据）
+     *
+     * @returns [en] The armature display container.
+     * @returns [zh] 骨架的显示容器。
+     *
+     * @see IArmatureProxy
+     * @see BaseFactory#buildArmature
      * @version DragonBones 4.5
      * @example
-     * <pre>
+     * ```ts
      *     let armatureDisplay = factory.buildArmatureDisplay("armatureName", "dragonBonesName");
-     * </pre>
-     * @language zh_CN
+     * ```
      */
     public buildArmatureDisplay(armatureName: string, dragonBonesName: string = "", skinName: string = "", textureAtlasName: string = ""): PixiArmatureDisplay | null {
         const armature = this.buildArmature(armatureName, dragonBonesName || "", skinName || "", textureAtlasName || "");
@@ -198,18 +186,17 @@ export class PixiFactory extends BaseFactory {
     }
 
     /**
-     * - Create the display object with the specified texture.
-     * @param textureName - The texture data name.
-     * @param textureAtlasName - The texture atlas data name (Of not set, all texture atlas data will be searched)
+     * [en] Create the display object with the specified texture.
+     *
+     * [zh] 创建带有指定贴图的显示对象。
+     *
+     * @param textureName - [en] The texture data name.
+     * @param textureName - [zh] 贴图数据名称。
+     *
+     * @param textureAtlasName - [en] The texture atlas data name (Of not set, all texture atlas data will be searched)
+     * @param textureAtlasName - [zh] 贴图集数据名称。 （如果未设置，将检索所有的贴图集数据）
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 创建带有指定贴图的显示对象。
-     * @param textureName - 贴图数据名称。
-     * @param textureAtlasName - 贴图集数据名称。 （如果未设置，将检索所有的贴图集数据）
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public getTextureDisplay(textureName: string, textureAtlasName: string | null = null): Sprite | null {
         const textureData = this._getTextureData(textureAtlasName !== null ? textureAtlasName : "", textureName) as PixiTextureData;
@@ -221,46 +208,40 @@ export class PixiFactory extends BaseFactory {
     }
 
     /**
-     * - A global sound event manager.
+     * [en] A global sound event manager.
      * Sound events can be listened to uniformly from the manager.
-     * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 全局声音事件管理器。
+     *
+     * [zh] 全局声音事件管理器。
      * 声音事件可以从该管理器统一侦听。
+     *
      * @version DragonBones 4.5
-     * @language zh_CN
      */
     public get soundEventManager(): PixiArmatureDisplay {
         return this._dragonBones.eventManager as PixiArmatureDisplay;
     }
 
     /**
-     * - Parse the raw data to a DragonBonesData instance and cache it to the factory.
-     * @param rawData - The raw data.
-     * @param name - Specify a cache name for the instance so that the instance can be obtained through this name. (If not set, use the instance name instead)
-     * @param scale - Specify a scaling value for all armatures. (Default: 1.0)
-     * @returns DragonBonesData instance
+     * [en] Parse the raw data to a DragonBonesData instance and cache it to the factory.
+     *
+     * [zh] 将原始数据解析为 DragonBonesData 实例，并缓存到工厂中。
+     *
+     * @param rawData - [en] The raw data.
+     * @param rawData - [zh] 原始数据。
+     *
+     * @param name - [en] Specify a cache name for the instance so that the instance can be obtained through this name. (If not set, use the instance name instead)
+     * @param name - [zh] 为该实例指定一个缓存名称，以便可以通过此名称获取该实例。 （如果未设置，则使用该实例中的名称）
+     *
+     * @param scale - [en] Specify a scaling value for all armatures. (Default: 1.0)
+     * @param scale - [zh] 为所有的骨架指定一个缩放值。 （默认: 1.0）
+     *
+     * @returns [en] DragonBonesData instance
+     * @returns [zh] DragonBonesData 实例
+     *
      * @see #getDragonBonesData()
      * @see #addDragonBonesData()
      * @see #removeDragonBonesData()
-     * @see dragonBones.DragonBonesData
+     * @see DragonBonesData
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 将原始数据解析为 DragonBonesData 实例，并缓存到工厂中。
-     * @param rawData - 原始数据。
-     * @param name - 为该实例指定一个缓存名称，以便可以通过此名称获取该实例。 （如果未设置，则使用该实例中的名称）
-     * @param scale - 为所有的骨架指定一个缩放值。 （默认: 1.0）
-     * @returns DragonBonesData 实例
-     * @see #getDragonBonesData()
-     * @see #addDragonBonesData()
-     * @see #removeDragonBonesData()
-     * @see dragonBones.DragonBonesData
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public parseDragonBonesData(rawData: string | Object, name: string | null = null, scale: number = 1.0): DragonBonesData | null {
         if (typeof rawData === "string") {
@@ -271,34 +252,32 @@ export class PixiFactory extends BaseFactory {
 
 
     /**
-     * - Parse the raw texture atlas data and the texture atlas object to a TextureAtlasData instance and cache it to the factory.
-     * @param rawData - The raw texture atlas data.
-     * @param textureAtlas - The texture atlas object.
-     * @param name - Specify a cache name for the instance so that the instance can be obtained through this name. (If not set, use the instance name instead)
-     * @param scale - Specify a scaling value for the map set. (Default: 1.0)
-     * @returns TextureAtlasData instance
+     * [en] Parse the raw texture atlas data and the texture atlas object to a TextureAtlasData instance and cache it to the factory.
+     *
+     * [zh] 将原始贴图集数据和贴图集对象解析为 TextureAtlasData 实例，并缓存到工厂中。
+     *
+     * @param rawData - [en] The raw texture atlas data.
+     * @param rawData - [zh] 原始贴图集数据。
+     *                       如果传入string，则从缓存中按别名查找
+     *
+     * @param textureAtlas - [en] The texture atlas object.
+     * @param textureAtlas - [zh] 贴图集对象。
+     *                            如果传入string，则从缓存中按别名查找
+     *
+     * @param name - [en] Specify a cache name for the instance so that the instance can be obtained through this name. (If not set, use the instance name instead)
+     * @param name - [zh] 为该实例指定一个缓存名称，以便可以通过此名称获取该实例。 （如果未设置，则使用该实例中的名称）
+     *
+     * @param scale - [en] Specify a scaling value for the map set. (Default: 1.0)
+     * @param scale - [zh] 为贴图集指定一个缩放值。 （默认: 1.0）
+     *
+     * @returns [en] TextureAtlasData instance
+     * @returns [zh] TextureAtlasData 实例
+     *
      * @see #getTextureAtlasData()
      * @see #addTextureAtlasData()
      * @see #removeTextureAtlasData()
-     * @see dragonBones.TextureAtlasData
+     * @see TextureAtlasData
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 将原始贴图集数据和贴图集对象解析为 TextureAtlasData 实例，并缓存到工厂中。
-     * @param rawData - 原始贴图集数据。
-     *                  如果传入string，则从缓存中按别名查找
-     * @param textureAtlas - 贴图集对象。
-     *                  如果传入string，则从缓存中按别名查找
-     * @param name - 为该实例指定一个缓存名称，以便可以通过此名称获取该实例。 （如果未设置，则使用该实例中的名称）
-     * @param scale - 为贴图集指定一个缩放值。 （默认: 1.0）
-     * @returns TextureAtlasData 实例
-     * @see #getTextureAtlasData()
-     * @see #addTextureAtlasData()
-     * @see #removeTextureAtlasData()
-     * @see dragonBones.TextureAtlasData
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public parseTextureAtlasData(rawData: string | Object, textureAtlas: string | Texture, name: string | null = null, scale: number = 1.0): TextureAtlasData {
         if (typeof rawData === "string") {

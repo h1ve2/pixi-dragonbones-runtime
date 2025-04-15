@@ -24,31 +24,22 @@
 import { BaseObject, BoundingBoxType } from "../core/index.js";
 
 /**
- * - The base class of bounding box data.
- * @see dragonBones.RectangleData
- * @see dragonBones.EllipseData
- * @see dragonBones.PolygonData
+ * [en] The base class of bounding box data.
+ *
+ * [zh] 边界框数据基类。
+ *
+ * @see RectangleData
+ * @see EllipseData
+ * @see PolygonData
  * @version DragonBones 5.0
- * @language en_US
- */
-/**
- * - 边界框数据基类。
- * @see dragonBones.RectangleData
- * @see dragonBones.EllipseData
- * @see dragonBones.PolygonData
- * @version DragonBones 5.0
- * @language zh_CN
  */
 export abstract class BoundingBoxData extends BaseObject {
     /**
-     * - The bounding box type.
+     * [en] The bounding box type.
+     *
+     * [zh] 边界框类型。
+     *
      * @version DragonBones 5.0
-     * @language en_US
-     */
-    /**
-     * - 边界框类型。
-     * @version DragonBones 5.0
-     * @language zh_CN
      */
     public type: BoundingBoxType;
     /**
@@ -70,25 +61,19 @@ export abstract class BoundingBoxData extends BaseObject {
         this.height = 0.0;
     }
     /**
-     * - Check whether the bounding box contains a specific point. (Local coordinate system)
+     * [en] Check whether the bounding box contains a specific point. (Local coordinate system)
+     *
+     * [zh] 检查边界框是否包含特定点。（本地坐标系）
+     *
      * @version DragonBones 5.0
-     * @language en_US
-     */
-    /**
-     * - 检查边界框是否包含特定点。（本地坐标系）
-     * @version DragonBones 5.0
-     * @language zh_CN
      */
     public abstract containsPoint(pX: number, pY: number): boolean;
     /**
-     * - Check whether the bounding box intersects a specific segment. (Local coordinate system)
+     * [en] Check whether the bounding box intersects a specific segment. (Local coordinate system)
+     *
+     * [zh] 检查边界框是否与特定线段相交。（本地坐标系）
+     *
      * @version DragonBones 5.0
-     * @language en_US
-     */
-    /**
-     * - 检查边界框是否与特定线段相交。（本地坐标系）
-     * @version DragonBones 5.0
-     * @language zh_CN
      */
     public abstract intersectsSegment(
         xA: number, yA: number, xB: number, yB: number,
@@ -115,14 +100,11 @@ const enum OutCode {
     Bottom = 8  // 1000
 }
 /**
- * - The rectangle bounding box data.
+ * [en] The rectangle bounding box data.
+ *
+ * [zh] 矩形边界框数据。
+ *
  * @version DragonBones 5.1
- * @language en_US
- */
-/**
- * - 矩形边界框数据。
- * @version DragonBones 5.1
- * @language zh_CN
  */
 export class RectangleBoundingBoxData extends BoundingBoxData {
     public static toString(): string {
@@ -337,14 +319,11 @@ export class RectangleBoundingBoxData extends BoundingBoxData {
     }
 }
 /**
- * - The ellipse bounding box data.
+ * [en] The ellipse bounding box data.
+ *
+ * [zh] 椭圆边界框数据。
+ *
  * @version DragonBones 5.1
- * @language en_US
- */
-/**
- * - 椭圆边界框数据。
- * @version DragonBones 5.1
- * @language zh_CN
  */
 export class EllipseBoundingBoxData extends BoundingBoxData {
     public static toString(): string {
@@ -496,14 +475,11 @@ export class EllipseBoundingBoxData extends BoundingBoxData {
     }
 }
 /**
- * - The polygon bounding box data.
+ * [en] The polygon bounding box data.
+ *
+ * [zh] 多边形边界框数据。
+ *
  * @version DragonBones 5.1
- * @language en_US
- */
-/**
- * - 多边形边界框数据。
- * @version DragonBones 5.1
- * @language zh_CN
  */
 export class PolygonBoundingBoxData extends BoundingBoxData {
     public static toString(): string {
@@ -665,14 +641,11 @@ export class PolygonBoundingBoxData extends BoundingBoxData {
      */
     public y: number;
     /**
-     * - The polygon vertices.
+     * [en] The polygon vertices.
+     *
+     * [zh] 多边形顶点。
+     *
      * @version DragonBones 5.1
-     * @language en_US
-     */
-    /**
-     * - 多边形顶点。
-     * @version DragonBones 5.1
-     * @language zh_CN
      */
     public readonly vertices: Array<number> = [];
 

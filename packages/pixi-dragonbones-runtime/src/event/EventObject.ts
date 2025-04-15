@@ -28,114 +28,84 @@ import { ActionData, UserData } from "../model/index.js";
 import { EventStringType } from "./IEventDispatcher.js";
 
 /**
- * - The properties of the object carry basic information about an event,
+ * [en] The properties of the object carry basic information about an event,
  * which are passed as parameter or parameter's parameter to event listeners when an event occurs.
+ *
+ * [zh] 事件对象，包含有关事件的基本信息，当发生事件时，该实例将作为参数或参数的参数传递给事件侦听器。
+ *
  * @version DragonBones 4.5
- * @language en_US
- */
-/**
- * - 事件对象，包含有关事件的基本信息，当发生事件时，该实例将作为参数或参数的参数传递给事件侦听器。
- * @version DragonBones 4.5
- * @language zh_CN
  */
 export class EventObject extends BaseObject {
     /**
-     * - Animation start play.
+     * [en] Animation start play.
+     *
+     * [zh] 动画开始播放。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 动画开始播放。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public static readonly START = "start";
     /**
-     * - Animation loop play complete once.
+     * [en] Animation loop play complete once.
+     *
+     * [zh] 动画循环播放完成一次。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 动画循环播放完成一次。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public static readonly LOOP_COMPLETE = "loopComplete";
     /**
-     * - Animation play complete.
+     * [en] Animation play complete.
+     *
+     * [zh] 动画播放完成。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 动画播放完成。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public static readonly COMPLETE = "complete";
     /**
-     * - Animation fade in start.
+     * [en] Animation fade in start.
+     *
+     * [zh] 动画淡入开始。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 动画淡入开始。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public static readonly FADE_IN = "fadeIn";
     /**
-     * - Animation fade in complete.
+     * [en] Animation fade in complete.
+     *
+     * [zh] 动画淡入完成。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 动画淡入完成。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public static readonly FADE_IN_COMPLETE = "fadeInComplete";
     /**
-     * - Animation fade out start.
+     * [en] Animation fade out start.
+     *
+     * [zh] 动画淡出开始。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 动画淡出开始。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public static readonly FADE_OUT = "fadeOut";
     /**
-     * - Animation fade out complete.
+     * [en] Animation fade out complete.
+     *
+     * [zh] 动画淡出完成。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 动画淡出完成。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public static readonly FADE_OUT_COMPLETE = "fadeOutComplete";
     /**
-     * - Animation frame event.
+     * [en] Animation frame event.
+     *
+     * [zh] 动画帧事件。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 动画帧事件。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public static readonly FRAME_EVENT = "frameEvent";
     /**
-     * - Animation frame sound event.
+     * [en] Animation frame sound event.
+     *
+     * [zh] 动画帧声音事件。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 动画帧声音事件。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public static readonly SOUND_EVENT = "soundEvent";
     /**
@@ -168,88 +138,63 @@ export class EventObject extends BaseObject {
         return "[class dragonBones.EventObject]";
     }
     /**
-     * - If is a frame event, the value is used to describe the time that the event was in the animation timeline. (In seconds)
+     * [en] If is a frame event, the value is used to describe the time that the event was in the animation timeline. (In seconds)
+     *
+     * [zh] 如果是帧事件，此值用来描述该事件在动画时间轴中所处的时间。（以秒为单位）
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 如果是帧事件，此值用来描述该事件在动画时间轴中所处的时间。（以秒为单位）
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public time: number;
     /**
-     * - The event type。
+     * [en] The event type。
+     *
+     * [zh] 事件类型。
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 事件类型。
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public type: EventStringType;
     /**
-     * - The event name. (The frame event name or the frame sound name)
+     * [en] The event name. (The frame event name or the frame sound name)
+     *
+     * [zh] 事件名称。 (帧事件的名称或帧声音的名称)
+     *
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 事件名称。 (帧事件的名称或帧声音的名称)
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public name: string;
     /**
-     * - The armature that dispatch the event.
-     * @see dragonBones.Armature
+     * [en] The armature that dispatch the event.
+     *
+     * [zh] 发出该事件的骨架。
+     *
+     * @see Armature
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 发出该事件的骨架。
-     * @see dragonBones.Armature
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public armature: Armature;
     /**
-     * - The bone that dispatch the event.
-     * @see dragonBones.Bone
+     * [en] The bone that dispatch the event.
+     *
+     * [zh] 发出该事件的骨骼。
+     *
+     * @see Bone
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 发出该事件的骨骼。
-     * @see dragonBones.Bone
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public bone: Bone | null;
     /**
-     * - The slot that dispatch the event.
-     * @see dragonBones.Slot
+     * [en] The slot that dispatch the event.
+     *
+     * [zh] 发出该事件的插槽。
+     *
+     * @see Slot
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 发出该事件的插槽。
-     * @see dragonBones.Slot
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public slot: Slot | null;
     /**
-     * - The animation state that dispatch the event.
-     * @see dragonBones.AnimationState
+     * [en] The animation state that dispatch the event.
+     *
+     * [zh] 发出该事件的动画状态。
+     *
+     * @see AnimationState
      * @version DragonBones 4.5
-     * @language en_US
-     */
-    /**
-     * - 发出该事件的动画状态。
-     * @see dragonBones.AnimationState
-     * @version DragonBones 4.5
-     * @language zh_CN
      */
     public animationState: AnimationState;
     /**
@@ -260,16 +205,12 @@ export class EventObject extends BaseObject {
      * @private
      */
     /**
-     * - The custom data.
-     * @see dragonBones.CustomData
+     * [en] The custom data.
+     *
+     * [zh] 自定义数据。
+     *
+     * @see CustomData
      * @version DragonBones 5.0
-     * @language en_US
-     */
-    /**
-     * - 自定义数据。
-     * @see dragonBones.CustomData
-     * @version DragonBones 5.0
-     * @language zh_CN
      */
     public data: UserData | null;
 

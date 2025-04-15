@@ -25,50 +25,38 @@ import { BaseObject, ActionType } from "../core/index.js";
 import { BoneData, SlotData } from "./ArmatureData.js";
 
 /**
- * - The user custom data.
+ * [en] The user custom data.
+ *
+ * [zh] 用户自定义数据。
+ *
  * @version DragonBones 5.0
- * @language en_US
- */
-/**
- * - 用户自定义数据。
- * @version DragonBones 5.0
- * @language zh_CN
  */
 export class UserData extends BaseObject {
     public static toString(): string {
         return "[class dragonBones.UserData]";
     }
     /**
-     * - The custom int numbers.
+     * [en] The custom int numbers.
+     *
+     * [zh] 自定义整数。
+     *
      * @version DragonBones 5.0
-     * @language en_US
-     */
-    /**
-     * - 自定义整数。
-     * @version DragonBones 5.0
-     * @language zh_CN
      */
     public readonly ints: Array<number> = [];
     /**
-     * - The custom float numbers.
+     * [en] The custom float numbers.
+     *
+     * [zh] 自定义浮点数。
+     *
      * @version DragonBones 5.0
-     * @language en_US
-     */
-    /**
-     * - 自定义浮点数。
-     * @version DragonBones 5.0
-     * @language zh_CN
      */
     public readonly floats: Array<number> = [];
     /**
-     * - The custom strings.
+     * [en] The custom strings.
+     *
+     * [zh] 自定义字符串。
+     *
      * @version DragonBones 5.0
-     * @language en_US
-     */
-    /**
-     * - 自定义字符串。
-     * @version DragonBones 5.0
-     * @language zh_CN
      */
     public readonly strings: Array<string> = [];
 
@@ -96,40 +84,31 @@ export class UserData extends BaseObject {
         this.strings.push(value);
     }
     /**
-     * - Get the custom int number.
+     * [en] Get the custom int number.
+     *
+     * [zh] 获取自定义整数。
+     *
      * @version DragonBones 5.0
-     * @language en_US
-     */
-    /**
-     * - 获取自定义整数。
-     * @version DragonBones 5.0
-     * @language zh_CN
      */
     public getInt(index: number = 0): number {
         return index >= 0 && index < this.ints.length ? this.ints[index] : 0;
     }
     /**
-     * - Get the custom float number.
+     * [en] Get the custom float number.
+     *
+     * [zh] 获取自定义浮点数。
+     *
      * @version DragonBones 5.0
-     * @language en_US
-     */
-    /**
-     * - 获取自定义浮点数。
-     * @version DragonBones 5.0
-     * @language zh_CN
      */
     public getFloat(index: number = 0): number {
         return index >= 0 && index < this.floats.length ? this.floats[index] : 0.0;
     }
     /**
-     * - Get the custom string.
+     * [en] Get the custom string.
+     *
+     * [zh] 获取自定义字符串。
+     *
      * @version DragonBones 5.0
-     * @language en_US
-     */
-    /**
-     * - 获取自定义字符串。
-     * @version DragonBones 5.0
-     * @language zh_CN
      */
     public getString(index: number = 0): string {
         return index >= 0 && index < this.strings.length ? this.strings[index] : "";

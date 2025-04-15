@@ -25,14 +25,11 @@ import { BaseObject } from "../core/index.js";
 import { Rectangle } from "../geom/index.js";
 
 /**
- * - The texture atlas data.
+ * [en] The texture atlas data.
+ *
+ * [zh] 贴图集数据。
+ *
  * @version DragonBones 3.0
- * @language en_US
- */
-/**
- * - 贴图集数据。
- * @version DragonBones 3.0
- * @language zh_CN
  */
 export abstract class TextureAtlasData extends BaseObject {
     /**
@@ -52,25 +49,19 @@ export abstract class TextureAtlasData extends BaseObject {
      */
     public scale: number;
     /**
-     * - The texture atlas name.
+     * [en] The texture atlas name.
+     *
+     * [zh] 贴图集名称。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 贴图集名称。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public name: string;
     /**
-     * - The image path of the texture atlas.
+     * [en] The image path of the texture atlas.
+     *
+     * [zh] 贴图集图片路径。
+     *
      * @version DragonBones 3.0
-     * @language en_US
-     */
-    /**
-     * - 贴图集图片路径。
-     * @version DragonBones 3.0
-     * @language zh_CN
      */
     public imagePath: string;
     /**
