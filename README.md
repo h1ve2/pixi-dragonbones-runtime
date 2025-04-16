@@ -9,6 +9,7 @@
     </div>
 </p>
 
+[简体中文](./README.zh-CN.md)
 
 - [Guide](https://h1ve2.github.io/pixi-dragonbones-runtime/guide/)
 - [API](https://h1ve2.github.io/pixi-dragonbones-runtime/api/8.x/)
