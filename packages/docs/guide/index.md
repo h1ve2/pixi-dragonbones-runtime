@@ -1,9 +1,6 @@
----
-outline: deep
----
-# 快速开始
+# QuickStart
 
-## 安装
+## Install
 ::: code-group
 ```sh [npm]
 $ npm i pixi-dragonbones-runtime
@@ -13,9 +10,5 @@ $ yarn add pixi-dragonbones-runtime
 ```
 :::
 <!--@include: ../../../README.md{24,42}-->
-## 示例 {#demo}
-:::sandpack {}
-```ts /index.ts
-<!--@include: ./demo.ts-->
-```
-:::
+## Example
+<!--@include: ../example/demo.md-->

@@ -26,7 +26,7 @@ export default {
                 });
             }
         };
-        app.component('Sandbox', Sandbox);
+        // app.component('Sandbox', Sandbox);
         app.component('Sandpack', Sandpack);
     }
 } satisfies Theme;

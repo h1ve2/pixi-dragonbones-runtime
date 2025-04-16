@@ -38,14 +38,17 @@ import "./styles.css";
 
     armatureDisplay.position.set(app.screen.width / 2, app.screen.height / 2);
 
+    // add to stage
     app.stage.addChild(armatureDisplay);
 
+    // add event listener
     armatureDisplay.addEventListener(EventObject.START, () => console.log('START'));
     armatureDisplay.addEventListener(EventObject.LOOP_COMPLETE, () => console.log('LOOP_COMPLETE'));
     armatureDisplay.addDBEventListener(EventObject.FRAME_EVENT, (e: EventObject) =>
         console.log(`FRAME_EVENT : ${e.name}`), armatureDisplay);
     armatureDisplay.addEventListener(EventObject.COMPLETE, () => console.log('COMPLETE'));
 
+    // play animation
     armatureDisplay.animation.play("Scaling", 3);
 
 
