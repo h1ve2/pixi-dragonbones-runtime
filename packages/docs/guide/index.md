@@ -9,6 +9,6 @@ $ npm i pixi-dragonbones-runtime
 $ yarn add pixi-dragonbones-runtime
 ```
 :::
-<!--@include: ../../../README.md{24,42}-->
+<!--@include: ../../../README.md{25,43}-->
 ## Example
 <!--@include: ../example/demo.md-->
