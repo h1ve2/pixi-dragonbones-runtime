@@ -1,4 +1,4 @@
-api
+**/api
 .vitepress/cache
 .vitepress/dist
 node_modules

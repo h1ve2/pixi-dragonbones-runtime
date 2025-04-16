@@ -5,60 +5,52 @@ import {groupIconMdPlugin, groupIconVitePlugin} from 'vitepress-plugin-group-ico
 import container from 'markdown-it-container';
 import {renderSandbox} from 'vitepress-plugin-sandpack';
 
-import dataJSON_8x from '../api/8.x/doc.json';
+import {getAPISideBar, getGuideSideBar, getOtherSideBar, i18nInit} from "./i18n";
 
-const isDev = process.env.NODE_ENV === 'development';
-const base = isDev ? '/' : '/pixi-dragonbones-runtime/';
+await i18nInit();
 
-const sidebar_8x = {text: 'API', link: "/api/8.x/", items: []};
-
-if (dataJSON_8x) {
-    dataJSON_8x.groups.forEach(group => {
-        const obj = {text: group.title, items: []};
-        sidebar_8x.items.push(obj);
-
-        group.children.forEach(childId => {
-            const child = getPageById(dataJSON_8x.children, childId);
-
-            obj.items.push({text: child.name, link: "/api/8.x/" + group.title.toLowerCase() + "/" + child.name});
-        })
-    })
-}
-
-function getPageById(obj: any[], childId: number): any {
-    for (let i = 0; i < obj.length; i++) {
-        if (obj[i].id !== childId) continue;
-        return obj[i];
-    }
-}
-
-const guideSidebar = {
-    text: '指南',
-    collapsed: false,
-    items: [
-        {text: '快速开始', link: '/guide/'},
-        {text: '事件', link: '/guide/event'},
-        {text: '进阶', link: '/guide/advanced'},
-        {text: '数据格式', link: '/guide/dataformat'},
-    ]
-};
-const otherSidebar = {
-    text: '其他',
-    collapsed: false,
-    items: [
-        {text: 'tools', link: '/other/tools'},
-        {text: '资源', link: '/other/resources'},
-    ]
-};
-
+// const isDev = process.env.NODE_ENV === 'development';
+const base = '/pixi-dragonbones-runtime/';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     title: "pixi-dragonbones-runtime",
     description: "DragonBones Runtime for Pixi.js",
     cleanUrls: true,
-    lang: 'zh-CN',
+    lang: 'en-US',
     base: base,
+    lastUpdated: true,
+    locales: {
+        root: {
+            label: 'English',
+        },
+        zh: {
+            label: '简体中文',
+            lang: 'zh-CN',
+            themeConfig: {
+                nav: [
+                    {text: '首页', link: '/zh/'},
+                    {text: '指南', link: '/zh/guide/'},
+                    {text: 'API', link: '/zh/api/8.x/'}
+                ],
+                sidebar: {
+                    "/zh/guide": [await getGuideSideBar('zh'), await getOtherSideBar('zh'), {
+                        text: 'API',
+                        link: '/zh/api/8.x/'
+                    }],
+                    "/zh/other": [await getGuideSideBar('zh'), await getOtherSideBar('zh'), {
+                        text: 'API',
+                        link: '/zh/api/8.x/'
+                    }],
+                    "/zh/api": [
+                        {...await getGuideSideBar('zh'), collapsed: true},
+                        {...await getOtherSideBar('zh'), collapsed: true},
+                        await getAPISideBar('zh')
+                    ],
+                },
+            }
+        }
+    },
     head: [
         ['meta', {name: 'google-site-verification', content: 'rUeF22MNNzMhe5S8sOS5k50Km-zLsFQAG777yjXW61U'}],
         ['link', {rel: 'icon', href: base + 'images/logo.png'}],
@@ -87,17 +79,17 @@ export default defineConfig({
         siteTitle: false,
         nav: [
             {text: 'Home', link: '/'},
-            {text: '指南', link: '/guide/'},
+            {text: 'Guide', link: '/guide/'},
             {text: 'API', link: '/api/8.x/'}
         ],
 
         sidebar: {
-            "/guide": [guideSidebar, otherSidebar, {text: 'API', link: '/api/8.x/'}],
-            "/other": [guideSidebar, otherSidebar, {text: 'API', link: '/api/8.x/'}],
+            "/guide": [await getGuideSideBar('en'), await getOtherSideBar('en'), {text: 'API', link: '/api/8.x/'}],
+            "/other": [await getGuideSideBar('en'), await getOtherSideBar('en'), {text: 'API', link: '/api/8.x/'}],
             "/api": [
-                {...guideSidebar, collapsed: true},
-                {...otherSidebar, collapsed: true},
-                sidebar_8x
+                {...await getGuideSideBar('en'), collapsed: true},
+                {...await getOtherSideBar('en'), collapsed: true},
+                await getAPISideBar()
             ],
         },
 
@@ -109,7 +101,12 @@ export default defineConfig({
             message: 'Released under the MIT License.',
             copyright: 'Copyright © 2025-present <a href="https://h1v.cn" target="_blank">h1ve2</a>'
         },
-        outline: [2, 3]
+        outline: [2, 3],
+        editLink: {
+            pattern: ({filePath}) => {
+                return `https://github.com/h1ve2/pixi-dragonbones-runtime/tree/main/packages/docs/${filePath}`
+            }
+        }
     },
     markdown: {
         config(md) {
@@ -132,5 +129,8 @@ export default defineConfig({
             vueJsx(),
             groupIconVitePlugin()
         ],
+    },
+    sitemap: {
+        hostname: 'https://h1ve2.github.io/pixi-dragonbones-runtime/'
     }
 })

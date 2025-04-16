@@ -11,11 +11,13 @@
     "docs:build": "npm run typedoc:all && vitepress build",
     "docs:preview": "vitepress preview",
     "clean": "rimraf ./api",
-    "typedoc:md": "typedoc --lang zh --out ./api/8.x/",
-    "typedoc:json": "typedoc --json ./api/8.x/doc.json  --cleanOutputDir false",
-    "typedoc:all": "npm run typedoc:md && npm run typedoc:json"
+    "typedoc:md-en": "typedoc --lang en --out ./api/8.x/",
+    "typedoc:md-zh": "typedoc --lang zh --out ./zh/api/8.x/",
+    "typedoc:json": "typedoc --json ./api/8.x/doc.json",
+    "typedoc:all": "npm run typedoc:md-zh && npm run typedoc:md-en && npm run typedoc:json"
   },
   "dependencies": {
+    "i18next": "^24.2.3",
     "vitepress-plugin-group-icons": "^1.3.8"
   },
   "devDependencies": {

@@ -37,8 +37,10 @@ import "./styles.css";
 
     armatureDisplay.position.set(app.screen.width/2+50, 450);
 
+    // add to stage
     app.stage.addChild(armatureDisplay);
 
+    // play animation
     armatureDisplay.animation.play("throw", -1);
 
 })();

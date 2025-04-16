@@ -1,154 +1,160 @@
-# 数据格式说明
+# Data Format
 ```json
 {
-  // 龙骨数据名称。
+  // The name of the DragonBones data.
   "name": "dragonBonesName",
 
-  // 数据版本。
+  // The version of the DragonBones data.
   "version": "5.5",
 
-  // 数据兼容的最低版本。
+  // The minimum compatible version of the DragonBones data.
   "compatibleVersion": "5.5",
 
-  // 动画帧率。 （可选属性，默认：24）
+  // The frame rate of animations. (Optional property, default: 24)
   "frameRate": 24,
 
-  // 自定义数据。 （可选属性，默认：null）
+  // The custom user data. (Optional property, default: null)
   "userData": null,
 
-  // 骨架列表。 （可选属性，默认：null）
+  // A list of the armatures. (Optional property, default: null)
   "armature": [{
 
-    // 骨架名称。
+    // The name of the armature.
     "name": "armatureName",
 
-    // 动画帧率。 （可选属性，默认：null）
-    // [null: 使用龙骨数据的帧率, N: 动画帧率]
+    // The frame rate of animations. (Optional property, default: null)
+    // [null: Same as the frame rate of the DragonBones data, N: The frame rate.]
     "frameRate": 24,
 
-    // 非必要。
+    // Nonessential.
     "type": "Armature",
 
-    // 自定义数据。 （可选属性，默认：null）
+    // The custom user data. (Optional property, default: null)
     "userData": null,
 
-    // 当该骨架做为子骨架加入到父骨架时的默认行为列表。 （可选属性，默认：null）
+    // A list of default actions when added to a parent armature. (Optional property, default: null)
     "defaultActions": [
       {
         "gotoAndPlay": "animationName"
       }
     ],
 
-    // 骨骼列表。 （可选属性，默认：null）
+    // A list of the bones. (Optional property, default: null)
     "bone": [{
 
-      // 骨骼名称。
+      // The name of the bone.
       "name": "boneName",
 
-      // 父骨骼名称。 （可选属性，默认：null）
+      // The name of the parent bone. (Optional property, default: null)
       "parent": "parentBoneName",
 
-      // 自定义数据。 （可选属性，默认：null）
+      // The custom user data. (Optional property, default: null)
       "userData": null,
 
-      // 该骨骼相对与父骨骼或骨架的基础变换。 （可选属性，默认：null）
+      // The transform of the bone relative to the parent bone or the armature for the base pose.
+      // (Optional property, default: null)
       "transform": {
-        "x": 0.0, // 水平位移。 （可选属性，默认：0.0）
-        "y": 0.0, // 垂直位移。 （可选属性，默认：0.0）
-        "skX": 0.0, // 水平倾斜。 （可选属性，默认：0.0）
-        "skY": 0.0, // 垂直倾斜。 （可选属性，默认：0.0）
-        "scX": 1.0, // 水平缩放。 （可选属性，默认：1.0）
-        "scY": 1.0  // 垂直缩放。 （可选属性，默认：1.0）
+        "x": 0.0, // The horizontal translate. (Optional property, default: 0.0)
+        "y": 0.0, // The vertical translate. (Optional property, default: 0.0)
+        "skX": 0.0, // The horizontal skew. (Optional property, default: 0.0)
+        "skY": 0.0, // The vertical skew. (Optional property, default: 0.0)
+        "scX": 1.0, // The horizontal scale. (Optional property, default: 1.0)
+        "scY": 1.0  // The vertical scale. (Optional property, default: 1.0)
       }
     }],
 
-    // 插槽列表。
+    // A list of the slots.
     "slot": [{
 
-      // 插槽名称。
+      // The name of the slot.
       "name": "slotName",
 
-      // 父骨骼名称。
+      // The name of the parent bone.
       "parent": "parentBoneName",
 
-      // 默认的显示对象索引。 （可选属性，默认：0）
+      // The default display index of the slot. (Optional property, default: 0)
       "displayIndex": 0,
 
-      // 混合模式。 （可选属性，默认：null）
+      // The blend mode of the slot. (Optional property, default: null)
       "blendMode": null,
 
-      // 自定义数据。 （可选属性，默认：null）
+      // The custom user data. (Optional property, default: null)
       "userData": null,
 
-      // 颜色变换。 （可选属性，默认：null）
+      // The color transform of the slot. (Optional property, default: null)
       "color": {
-        "aM": 100, // 透明相乘因子。 [0~100] （可选属性，默认：100）
-        "rM": 100, // 红色相乘因子。 [0~100] （可选属性，默认：100）
-        "gM": 100, // 绿色相乘因子。 [0~100] （可选属性，默认：100）
-        "bM": 100, // 蓝色相乘因子。 [0~100] （可选属性，默认：100）
-        "aO": 0, // 透明偏移。 [-255~255] （可选属性，默认：0）
-        "rO": 0, // 红色偏移。 [-255~255] （可选属性，默认：0）
-        "gO": 0, // 绿色偏移。 [-255~255] （可选属性，默认：0）
-        "bO": 0, // 蓝色偏移。 [-255~255] （可选属性，默认：0）
+        "aM": 100, // The alpha multiplier. [0~100] (Optional property, default: 100)
+        "rM": 100, // The red multiplier. [0~100] (Optional property, default: 100)
+        "gM": 100, // The green multiplier. [0~100] (Optional property, default: 100)
+        "bM": 100, // The blue multiplier. [0~100] (Optional property, default: 100)
+        "aO": 0, // The alpha offset. [-255~255] (Optional property, default: 0)
+        "rO": 0, // The red offset. [-255~255] (Optional property, default: 0)
+        "gO": 0, // The green offset. [-255~255] (Optional property, default: 0)
+        "bO": 0, // The blue offset. [-255~255] (Optional property, default: 0)
       }
     }],
 
-    // 皮肤列表。
+    // A list of the skins.
     "skin": [{
 
-      // 皮肤名称。
+      // The name of the skin.
       "name": "skinName",
 
-      // 插槽列表。
+      // A list of the slots.
       "slot": [{
 
-        // 插槽名称。
+        // The name of the slot.
         "name": "slotName",
 
-        // 显示对象列表。
+        // A list of the displays.
         "display": [{
 
-          // 显示对象名称。
+          // The name of the display.
           "name": "displayName",
 
-          // 显示对象类型。 （可选属性，默认："image"）
-          // ["image": 贴图的矩形, "armature": 嵌套的子骨架, "mesh": 贴图的网格, "boundingBox": 自定义边界框]
+          // The type of the display. (Optional property, default: "image")
+          // [
+          //     "image": A textured rectangle, 
+          //     "armature": A nested child armature, 
+          //     "mesh": A textured mesh, 
+          //     "boundingBox": A bounding box
+          // ]
           "type": "image",
 
-          // 显示对象的资源路径。 （可选属性，默认：null）
+          // The resource path of the display. (Optional property, default: null)
           "path": null,
 
-          // 共享网格的名称。 （可选属性，默认：null）
+          // The name of the shared mesh. (Optional property, default: null)
           "share": "meshName",
 
-          // 是否继承共享网格的形变动画。 （可选属性，默认：true）
+          // Whether to inherit the deform animations of the shared mesh. (Optional property, default: true)
           "inheritDeform": true,
 
-          // 显示对象的子类型。
-          // 如果是边界框: （可选属性，默认："rectangle"）
-          // ["rectangle": 矩形边界框, "ellipse": 椭圆边界框, "polygon": 多边形边界框]
+          // The sub type of the display.
+          // If the display is a bounding box: (Optional property, default: "rectangle")
+          // ["rectangle": A rectangle, "ellipse": An ellipse, "polygon": A pllygon]
           "subType": "rectangle",
 
-          // 非必要。
+          // Nonessential.
           "color": 0x000000,
 
-          // 相对于骨骼的变换。 （可选属性，默认：null）
+          // The transform of the display relative to the slot's bone. (Optional property, default: null)
           "transform": {
-            "x": 0.0, // 水平位移。 （可选属性，默认：0.0）
-            "y": 0.0, // 垂直位移。 （可选属性，默认：0.0）
-            "skX": 0.0, // 水平倾斜。 （可选属性，默认：0.0）
-            "skY": 0.0, // 垂直倾斜。 （可选属性，默认：0.0）
-            "scX": 1.0, // 水平缩放。 （可选属性，默认：1.0）
-            "scY": 1.0  // 垂直缩放。 （可选属性，默认：1.0）
+            "x": 0.0, // The horizontal translate. (Optional property, default: 0.0)
+            "y": 0.0, // The vertical translate. (Optional property, default: 0.0)
+            "skX": 0.0, // The horizontal skew. (Optional property, default: 0.0)
+            "skY": 0.0, // The vertical skew. (Optional property, default: 0.0)
+            "scX": 1.0, // The horizontal scale. (Optional property, default: 1.0)
+            "scY": 1.0  // The vertical scale. (Optional property, default: 1.0)
           },
 
-          // 相对轴点。 （可选属性，默认：null）
+          // The relative pivot of the display. (Optional property, default: null)
           "pivot": {
-            "x": 0.5, // 水平位移。 [0.0~1.0] （可选属性，默认：0.5）
-            "y": 0.5, // 垂直位移。 [0.0~1.0] （可选属性，默认：0.5）
+            "x": 0.5, // The horizontal translate. [0.0~1.0] (Optional property, default: 0.5)
+            "y": 0.5, // The vertical translate. [0.0~1.0] (Optional property, default: 0.5)
           },
 
-          // 显示对象的尺寸。 （仅对边界框有效）
+          // The size of display. (Valid for bounding box only)
           "width": 100,
           "height": 100,
 
@@ -164,7 +170,7 @@
 
           "bonePose": [0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0],
 
-          // 替换子骨架的默认行为列表。 （可选属性，默认：null）
+          // Override the default actions of the nested child armature. (Optional property, default: null)
           "actions": [
             {
               "gotoAndPlay": "animationName"
@@ -174,172 +180,183 @@
       }]
     }],
 
-    // IK 约束列表。
+    // A list of the IK constraints.
     "ik": [{
 
-      // IK 约束名称。
-      "name": "ikContaintName",
+      // The name of the IK constraint.
+      "name": "ikName",
 
-      // 约束骨骼的名称。
+      // The name of the bone.
       "bone": "boneName",
 
-      // 约束目标骨骼的名称
+      // The name of the target bone.
       "target": "ikBoneName",
 
-      // IK 约束的方向。 （可选属性，默认：true）
-      // [true: 正方向 / 顺时针, false: 反方向 / 逆时针]
+      // The IK constraint bend direction. (Optional property, default: true)
+      // [true: Positive direction / Clockwise, false: Reverse Direction / Counterclockwise]
       "bendPositive": true,
 
-      // 被约束的骨骼链长度。
-      // [0: 至约束骨骼, N: 该骨骼和向上 N 级的父骨骼] （可选属性，默认：0）
+      // The bone count of the bone chain in the constraint.
+      // [0: Only the bone, N: The bone and the bone up N-level parent bones] (Optional property, default: 0)
       "chain": 0,
 
-      // 约束权重。 [0.0~1.0] （可选属性，默认：1.0）
+      // The weight of the IK constraint. [0.0~1.0] (Optional property, default: 1.0)
       "weight": 1.0
     }],
 
-    // 动画列表。
+    // A list of the animations.
     "animation": [{
 
-      // 动画名称。
+      // The name of animation.
       "name": "animationName",
 
-      // 动画播放次数。 [0: 循环播放, N: 播放 N 次] （可选属性，默认：1）
+      // The play times of the animation. [0: Loop play, N: Play N times] (Optional property, default: 1)
       "playTimes": 1,
 
-      // 动画长度。 （可选属性，默认：1）
+      // The duration of the animation. (Optional property, default: 1)
       "duration": 1,
 
-      // 行为关键帧列表。 （可选属性，默认：null）
+      // A list of the action keyframes. (Optional property, default: null)
       "frame": [{
 
-        // 关键帧长度。 （可选属性，默认：1）
+        // The duration of the frame. (Optional property, default: 1)
         "duration": 1,
 
-        // 该帧的行为列表。 （可选属性，默认：null）
+        // A list of actions. (Optional property, default: null)
         "actions": [{
 
-          // 行为类型。 [0: 播放动画, 10: 帧事件, 11: 帧声音事件] （可选属性，默认：0）
+          // The type of the action. (Optional property, default: 0)
+          // [0: Play animation, 10: Frame event, 11: Frame sound event]
           "type": 0,
 
-          // 行为的名称。 （动画名称或事件名称）
+          // The name of the action. (The name of a animation or an event)
           "name": "actionName",
 
-          // 骨骼名称。 （可选属性，默认：null）
+          // A bone name. (Optional property, default: null)
           "bone": "boneName",
 
-          // 插槽名称。 （可选属性，默认：null）
+          // A slot name. (Optional property, default: null)
           "slot": "slotName",
 
-          // 自定义数据列表。 （可选属性，默认：null）
+          // The list of custom data. (Optional property, default: null)
           "ints":[0， 1， 2],
           "floats":[0.01， 1.01， 2.01],
           "strings":["a", "b", "c"]
         }]
       }],
 
-      // z 排序时间轴。
+      // The z order timeline.
       "zOrder": {
         "frame": [{
 
-          // 关键帧长度。 （可选属性，默认：1）
+          // The duration of the frame. (Optional property, default: 1)
           "duration": 1,
 
-          // 该帧插槽 z 排序偏移列表。 [slotIndexA, offsetA, slotIndexB, offsetB, ...] （可选属性，默认：null）
+          // A list of slot indeices and numeric offsets. [slotIndexA, offsetA, slotIndexB, offsetB, ...]
+          // (Optional property, default: null)
           "zOrder": [0, 2, 4, 1, 6, -1]
         }]
       },
 
-      // 骨骼时间轴列表。
+      // A list of the bone timelines.
       "bone": [{
 
-        // 骨骼名称。
+        // The name of the bone.
         "name": "boneName",
 
-        // 时间轴缩放。 （可选属性，默认：0.0）
+        // The scale of the timeline. (Optional property, default: 0.0)
         "scale": 1.0,
 
-        // 时间轴偏移。 （可选属性，默认：0.0）
+        // The offset of the timeline. (Optional property, default: 0.0)
         "offset": 0.0,
 
-        // 位移关键帧列表。 （可选属性，默认：null）
+        // A list of the translate keyframes. (Optional property, default: null)
         "translateFrame": [{
 
-          // 关键帧长度。 （可选属性，默认：1）
+          // The duration of the frame. (Optional property, default: 1)
           "duration": 1,
 
-          // 补间类型 [0.0: 线形, null: 不补间]. （可选属性，默认：0）
+          // The tween easing of the frame. [0.0: Linear, null: No easing]. (Optional property, default: 0)
           "tweenEasing": 0.0,
 
-          // 补间贝塞尔曲线。 [x1, y1, x2, y2, ...] （可选属性，默认：null）
+          // The interpolation to use between this and the next keyframe. [x1, y1, x2, y2, ...]
+          // (Optional property, default: null)
           "curve": [0.0, 0.0, 1.0, 1.0],
 
-          // 该帧骨骼的水平位移。 （可选属性，默认：0.0）
+          // The horizontal translate of a bone in the keyframe. (Optional property, default: 0.0)
           "x": 0.0,
 
-          // 该帧骨骼的垂直位移。 （可选属性，默认：0.0）
+          // The vertical translate of a bone in the keyframe. (Optional property, default: 0.0)
           "y": 0.00,
         }],
 
-        // 旋转关键帧列表。 （可选属性，默认：null）
+        // A list of the rotate keyframes. (Optional property, default: null)
         "rotateFrame": [{
 
-          // 关键帧长度。 （可选属性，默认：1）
+          // The duration of the frame. (Optional property, default: 1)
           "duration": 1,
 
-          // 补间类型 [0.0: 线形, null: 不补间]. （可选属性，默认：0）
+          // The tween easing of the frame. [0.0: Linear, null: No easing]. (Optional property, default: 0)
           "tweenEasing": 0.0,
 
-          // 补间贝塞尔曲线。 [x1, y1, x2, y2, ...] （可选属性，默认：null）
+          // The interpolation to use between this and the next keyframe. [x1, y1, x2, y2, ...]
+          // (Optional property, default: null)
           "curve": [0.0, 0.0, 1.0, 1.0],
 
-          // 补间的旋转方式。 （可选属性，默认：0）
-          // [0: 最小角度旋转, 1: 顺时针旋转, -1: 逆时针旋转, N: 至少顺时针旋转 N 圈, -N: 至少逆时针旋转 N 圈]
+          // The rotation behavior during a tween. (Optional property, default: 0)
+          // [
+          //     0: Chooses a direction of rotation that requires the least amount of turning, 
+          //     1: Rotates clockwise, 
+          //     -1: Rotates counterclockwise, 
+          //     N: Rotates clockwise at least N-rings, 
+          //     -N: Rotates counterclockwise at least N-rings
+          // ]
           "clockwise": 0,
 
-          // 该帧骨骼的旋转。 [-PI ~ PI] （可选属性，默认：0.0）
+          // The rotation of a bone in the keyframe. [-PI ~ PI] (Optional property, default: 0.0)
           "rotate": 0.0,
 
-          // 该帧骨骼的倾斜。 [-PI ~ PI] （可选属性，默认：0.0）
+          // The skew of a bone in the keyframe. [-PI ~ PI] (Optional property, default: 0.0)
           "skew": 0.0
         }],
 
-        // 缩放关键帧列表。 （可选属性，默认：null）
+        // A list of the scale keyframes. (Optional property, default: null)
         "scaleFrame": [{
 
-          // 关键帧长度。 （可选属性，默认：1）
+          // The duration of the frame. (Optional property, default: 1)
           "duration": 1,
 
-          // 补间类型 [0.0: 线形, null: 不补间]. （可选属性，默认：0）
+          // The tween easing of the frame. [0.0: Linear, null: No easing]. (Optional property, default: 0)
           "tweenEasing": 0.0,
 
-          // 补间贝塞尔曲线。 [x1, y1, x2, y2, ...] （可选属性，默认：null）
+          // The interpolation to use between this and the next keyframe. [x1, y1, x2, y2, ...]
+          // (Optional property, default: null)
           "curve": [0.0, 0.0, 1.0, 1.0],
 
-          // 该帧骨骼的水平缩放。 （可选属性，默认：1.0）
+          // The horizontal scale of a bone in the keyframe. (Optional property, default: 1.0)
           "x": 1.0,
 
-          // 该帧骨骼的垂直缩放。 （可选属性，默认：1.0）
+          // The vertical scale of a bone in the keyframe. (Optional property, default: 1.0)
           "y": 1.0
         }]
       }],
 
-      // 插槽时间轴列表。
+      // A list of the slot timelines.
       "slot": [{
 
-        // 时间轴名称。
+        // The name of the slot.
         "name": "slotName",
 
-        // 显示关键帧列表。 （可选属性，默认：null）
+        // A list of the display keyframes. (Optional property, default: null)
         "displayFrame": [{
 
-          // 关键帧长度。 （可选属性，默认：1）
+          // The duration of the frame. (Optional property, default: 1)
           "duration": 1,
 
-          // 该帧插槽的显示对象索引。 （可选属性，默认：1）
+          // The display index of a slot in the keyframe. (Optional property, default: 1)
           "value": 0,
 
-          // 该帧嵌套子骨架的行为列表。 （可选属性，默认：null）
+          // The actions of a slot in the keyframe. (Optional property, default: null)
           "actions": [
             {
               "gotoAndPlay": "animationName"
@@ -347,85 +364,89 @@
           ]
         }],
 
-        // 颜色关键帧列表。 （可选属性，默认：null）
+        // A list of the color keyframes. (Optional property, default: null)
         "colorFrame": [{
 
-          // 关键帧长度。 （可选属性，默认：1）
+          // The duration of the frame. (Optional property, default: 1)
           "duration": 1,
 
-          // 补间类型 [0.0: 线形, null: 不补间]. （可选属性，默认：0）
+          // The tween easing of the frame. [0.0: Linear, null: No easing]. (Optional property, default: 0)
           "tweenEasing": 0.0,
 
-          // 补间贝塞尔曲线。 [x1, y1, x2, y2, ...] （可选属性，默认：null）
+          // The interpolation to use between this and the next keyframe. [x1, y1, x2, y2, ...]
+          // (Optional property, default: null)
           "curve": [0.0, 0.0, 1.0, 1.0],
 
-          // 该帧插槽的颜色变换。 （可选属性，默认：null）
+          // The color transform of a slot in the frame. (Optional property, default: null)
           "color": {
-            "aM": 100, // 透明相乘因子。 [0~100] （可选属性，默认：100）
-            "rM": 100, // 红色相乘因子。 [0~100] （可选属性，默认：100）
-            "gM": 100, // 绿色相乘因子。 [0~100] （可选属性，默认：100）
-            "bM": 100, // 蓝色相乘因子。 [0~100] （可选属性，默认：100）
-            "aO": 0, // 透明偏移。 [-255~255] （可选属性，默认：0）
-            "rO": 0, // 红色偏移。 [-255~255] （可选属性，默认：0）
-            "gO": 0, // 绿色偏移。 [-255~255] （可选属性，默认：0）
-            "bO": 0, // 蓝色偏移。 [-255~255] （可选属性，默认：0）
+            "aM": 100, // The alpha multiplier. [0~100] (Optional property, default: 100)
+            "rM": 100, // The red multiplier. [0~100] (Optional property, default: 100)
+            "gM": 100, // The green multiplier. [0~100] (Optional property, default: 100)
+            "bM": 100, // The blue multiplier. [0~100] (Optional property, default: 100)
+            "aO": 0, // The alpha offset. [-255~255] (Optional property, default: 0)
+            "rO": 0, // The red offset. [-255~255] (Optional property, default: 0)
+            "gO": 0, // The green offset. [-255~255] (Optional property, default: 0)
+            "bO": 0, // The blue offset. [-255~255] (Optional property, default: 0)
           }
         }]
       }],
 
-      // FFD 时间轴列表。（可选属性，默认：null）
+      // A list of the FFD timelines. (Optional property, default: null)
       "ffd": [{
 
-        // 网格名称。
+        // The name of the mesh.
         "name": "meshName",
 
-        // 皮肤名称。
+        // The name of skin.
         "skin": "skinName",
 
-        // 插槽名称。
+        // The name of slot.
         "slot": "slotName",
 
         "frame": [{
 
-          // 关键帧长度。 （可选属性，默认：1）
+          // The duration of the frame. (Optional property, default: 1)
           "duration": 1,
 
-          // 补间类型 [0.0: 线形, null: 不补间]. （可选属性，默认：0）
+          // The tween easing of the frame. [0.0: Linear, null: No easing]. (Optional property, default: 0)
           "tweenEasing": 0.0,
 
-          // 补间贝塞尔曲线。 [x1, y1, x2, y2, ...] （可选属性，默认：null）
+          // The interpolation to use between this and the next keyframe. [x1, y1, x2, y2, ...]
+          // (Optional property, default: null)
           "curve": [0.0, 0.0, 1.0, 1.0],
 
-          // 变形顶点列表的索引偏移，偏移之前的数据都是 0。 （可选属性，默认：0）
+          // The number of vertices to skip before applying vertices. (Optional property, default: 0)
           "offset": 0,
 
-          // 变形顶点列表，队尾为 0 的数据会别省略。
-          // [x0, y0, x1, y1, ...] （可选属性，默认：null）
+          // A list of number pairs that are the amounts to add to the setup vertex positions for the keyframe.
+          // (Optional property, default: null)
+          // [x0, y0, x1, y1, ...]
           "vertices": [0.1, 0.1]
         }]
       }],
 
-      // IK 约束时间轴。 （可选属性，默认：null）
+      // A list of the IK constraint timelines. (Optional property, default: null)
       "ik": [{
 
-        // IK 约束名称。
+        // The name of the IK constraint.
         "name": "meshName",
 
         "frame": [{
 
-          // 关键帧长度。 （可选属性，默认：1）
+          // The duration of the frame. (Optional property, default: 1)
           "duration": 1,
 
-          // 补间类型 [0.0: 线形, null: 不补间]. （可选属性，默认：0）
+          // The tween easing of the frame. [0.0: Linear, null: No easing]. (Optional property, default: 0)
           "tweenEasing": 0.0,
 
-          // 补间贝塞尔曲线。 [x1, y1, x2, y2, ...] （可选属性，默认：null）
+          // The interpolation to use between this and the next keyframe. [x1, y1, x2, y2, ...]
+          // (Optional property, default: null)
           "curve": [0.0, 0.0, 1.0, 1.0],
 
-          // 该帧 IK 约束的方向。 （可选属性，默认：true）
+          // The positive direction of the IK constraint in the frame. (Optional property, default: true)
           "bendPositive": true,
 
-          // 该帧 IK 约束的权重。 （可选属性，默认：1.0）
+          // The weight of the IK constraint in the frame. (Optional property, default: 1.0)
           "weight": 1.0
         }]
       }]

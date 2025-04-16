@@ -5,15 +5,15 @@
     </picture>
     <div align="center" style="margin-top: -20px">
         <h3>DragonBones Runtime for Pixi.js</h3>
-        <p>supports Pixi.js@7~8.x</p>
+        <p>支持 Pixi.js@7~8.x</p>
     </div>
 </p>
 
 
-- [Guide](https://h1ve2.github.io/pixi-dragonbones-runtime/guide/)
-- [API](https://h1ve2.github.io/pixi-dragonbones-runtime/api/8.x/)
+- [指南](https://h1ve2.github.io/pixi-dragonbones-runtime/guide/)
+- [API文档](https://h1ve2.github.io/pixi-dragonbones-runtime/api/8.x/)
 
-## Install
+## 安装
 ```sh [npm]
 $ npm i pixi-dragonbones-runtime
 ```
@@ -22,15 +22,17 @@ or
 $ yarn add pixi-dragonbones-runtime
 ```
 > [!WARNING]
-> When using `pixi.js@7.x` install `pixi-dragonbones-runtime@7.x`.
+> `pixi.js@7.x`对应`pixi-dragonbones-runtime@7.x`版本.
 
-## Usage
+## 使用
 ```ts
 import { PixiFactory } from "pixi-dragonbones-runtime";
 
-// after assets loaded
+// 资源加载后
 const factory = PixiFactory.factory;
-factory.parseDragonBonesData("xxx_ske.json"); // asset alias or JSON Object 
+
+// 资源别名或对象
+factory.parseDragonBonesData("xxx_ske.json"); 
 factory.parseTextureAtlasData("xxx_tex.json", "xxx_tex.png");
 
 const armatureDisplay = factory.buildArmatureDisplay("xxx");
@@ -40,8 +42,8 @@ armatureDisplay.animation.play("xxx",-1);
 app.stage.addChild(armatureDisplay);
 
 ```
-## Example
+## 示例
 [![example](https://github.com/h1ve2/pixi-dragonbones-runtime-starter/raw/main/preview.gif)](https://h1ve2.github.io/pixi-dragonbones-runtime/guide/#Example)
 
-- [Online Example](https://h1ve2.github.io/pixi-dragonbones-runtime/guide/#Example)
-- [Starter Project](https://github.com/h1ve2/pixi-dragonbones-runtime-starter) (pixi & vite & assetpack)
+- [完整示例](https://h1ve2.github.io/pixi-dragonbones-runtime/guide/#Example)
+- [starter示例项目](https://github.com/h1ve2/pixi-dragonbones-runtime-starter) (pixi & vite & assetpack)
