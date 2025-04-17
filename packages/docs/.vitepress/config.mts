@@ -54,7 +54,7 @@ export default defineConfig({
     },
     head: [
         ['meta', {name: 'google-site-verification', content: 'rUeF22MNNzMhe5S8sOS5k50Km-zLsFQAG777yjXW61U'}],
-        ['link', {rel: 'icon', href: base + 'images/logo.png'}],
+        ['link', {rel: 'icon', type: 'image/png', href: base + 'images/logo.png'}],
         [
             'script',
             {},
@@ -132,6 +132,7 @@ export default defineConfig({
         ],
     },
     sitemap: {
-        hostname: 'https://h1ve2.github.io/pixi-dragonbones-runtime/'
+        hostname: 'https://h1ve2.github.io/pixi-dragonbones-runtime/',
+        lastmodDateOnly: false
     }
 })
