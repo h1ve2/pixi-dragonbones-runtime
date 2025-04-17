@@ -18,6 +18,7 @@ export async function i18nInit() {
                     "Enumerations": "枚举",
                     "Classes": "类",
                     "Interfaces": "接口",
+                    "Functions": "函数",
 
                     "Create a new application": "创建一个Application",
                     "Initialize the application": "初始化Application",
