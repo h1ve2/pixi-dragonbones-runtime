@@ -16,7 +16,6 @@ export const Sandpack = defineComponent({
         const {lang} = useData();
 
         const langStr = lang.value.split('-')[0];
-        console.log(langStr);
         changeLanguage(langStr);
 
 
