@@ -41,7 +41,7 @@ export function load({application}) {
 
             if (langCheckExp.test(n?.content[0]?.text)) {
                 n.content[0].text = getTextByLang(n.content[0].text, lang);
-            } else if (/.*[en|zh].*/ig.test(n?.content[0]?.text)) {
+            } else if (/.*(\[en\]|\[zh\]).*/ig.test(n?.content[0]?.text)) {
                 n.skipRendering = true;
                 reflection.comment?.blockTags?.splice(i, 1);
                 i--;
