@@ -1,3 +1,4 @@
+![NPM Version](https://img.shields.io/npm/v/pixi-dragonbones-runtime) ![NPM Downloads](https://img.shields.io/npm/dm/pixi-dragonbones-runtime)
 # pixi-dragonbones-runtime
 <p style="text-align:center;" align="center">
     <picture align="center">
