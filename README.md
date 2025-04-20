@@ -1,5 +1,5 @@
 # pixi-dragonbones-runtime
-![NPM Version](https://img.shields.io/npm/v/pixi-dragonbones-runtime) ![NPM Downloads](https://img.shields.io/npm/dm/pixi-dragonbones-runtime)
+[![NPM Version](https://img.shields.io/npm/v/pixi-dragonbones-runtime)](https://www.npmjs.com/package/pixi-dragonbones-runtime) [![NPM Downloads](https://img.shields.io/npm/dm/pixi-dragonbones-runtime)](https://www.npmjs.com/package/pixi-dragonbones-runtime)
 <p style="text-align:center;" align="center">
     <picture align="center">
         <img align="center" alt="pixi-dragonbones-runtime" width="200" src="https://h1ve2.github.io/pixi-dragonbones-runtime/images/pic.png" />
