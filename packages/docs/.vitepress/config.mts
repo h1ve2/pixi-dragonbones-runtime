@@ -53,6 +53,9 @@ export default defineConfig({
         }
     },
     head: [
+        ['meta', {name: 'description', content: 'DragonBones Runtime for Pixi.js'}],
+        ['meta', {name: 'keywords', content: 'DragonBones,PixiJS,pixi.js'}],
+        ['meta', {name: 'author', content: 'h1ve2'}],
         ['meta', {name: 'google-site-verification', content: 'rUeF22MNNzMhe5S8sOS5k50Km-zLsFQAG777yjXW61U'}],
         ['link', {rel: 'icon', type: 'image/png', href: base + 'images/logo.png'}],
         [
