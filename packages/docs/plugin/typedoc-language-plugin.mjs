@@ -13,17 +13,18 @@ export function load({application}) {
     application.converter.on(Converter.EVENT_CREATE_DECLARATION, (context, reflection, node) => {
         if (!reflection.comment) return;
 
+        mergeCommentsPart(reflection.comment?.summary);
         reflection.comment?.summary.forEach(n => n.text = getTextByLang(n.text, lang));
 
 
         for (let i = 0; i < reflection.comment?.blockTags?.length; i++) {
             const n = reflection.comment.blockTags[i];
-                if (!n.name) continue
-                if (n.name.trim() !== lang) {
-                    n.skipRendering = true;
-                    reflection.comment.blockTags.splice(i, 1);
-                    i--;
-                }
+            if (!n.name) continue
+            if (n.name.trim() !== lang) {
+                n.skipRendering = true;
+                reflection.comment.blockTags.splice(i, 1);
+                i--;
+            }
         }
     });
 
@@ -33,6 +34,7 @@ export function load({application}) {
     application.converter.on(Converter.EVENT_CREATE_SIGNATURE, (context, reflection, node) => {
         if (!reflection.comment) return;
 
+        mergeCommentsPart(reflection.comment?.summary);
         reflection.comment?.summary?.forEach(n => n.text = getTextByLang(n.text, lang));
 
         for (let i = 0; i < reflection.comment?.blockTags?.length; i++) {
@@ -59,9 +61,19 @@ function getTextByLang(text, lang) {
     const regExp = new RegExp(`\\[${lang}\\](.+?)(\\[zh\\]|\\[en\\]|$)+?`, 'igs');
     const mat = regExp.exec(text);
     if (mat && mat.length > 1) {
-        return mat[1];
+        text = mat[1];
     }
 
     return text.trim();
+
+}
+
+function mergeCommentsPart(comments) {
+    if (!comments || comments.length <= 1) return;
+    for (let i = 1; i < comments.length; i++) {
+        comments[0].text += comments[i].text;
+        comments.splice(i,1);
+        i--;
+    }
 
 }
