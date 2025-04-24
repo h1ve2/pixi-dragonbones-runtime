@@ -6,4 +6,8 @@ export function load(app) {
         'page.begin',
         () => `---\neditLink: false\n---`,
     );
+    app.renderer.markdownHooks.on(
+        'index.page.begin',
+        () => `---\neditLink: false\n---`,
+    );
 }
