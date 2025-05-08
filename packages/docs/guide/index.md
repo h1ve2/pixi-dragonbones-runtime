@@ -2,10 +2,10 @@
 
 ## Install
 ::: code-group
-```sh [npm]
+```bash [npm]
 $ npm i pixi-dragonbones-runtime
 ```
-```sh [yarn]
+```bash [yarn]
 $ yarn add pixi-dragonbones-runtime
 ```
 :::
